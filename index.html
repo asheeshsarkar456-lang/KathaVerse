@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    content="width=device-width, initial-scale=1.0"
   >
 
   <meta
     name="description"
-    content="KathaVerse — आपकी कहानी। आपकी दुनिया। Stories Beyond Imagination."
+    content="KathaVerse - Stories Beyond Imagination"
   >
-
-  <meta name="theme-color" content="#08080d">
 
   <title>KathaVerse — Stories Beyond Imagination</title>
 
@@ -22,57 +20,50 @@
 
 <body>
 
-  <!-- =========================
-       APP HEADER
-  ========================== -->
+  <!-- HEADER -->
 
-  <header class="top-header">
+  <header class="topbar">
 
     <button
-      class="menu-button"
-      id="menuButton"
-      aria-label="Open Menu"
+      class="icon-btn menu-btn"
+      onclick="toggleSidebar()"
+      aria-label="Menu"
     >
       ☰
     </button>
 
     <div
       class="brand"
-      onclick="navigateTo('home')"
+      onclick="navigate('home')"
     >
+      <div class="brand-mark">K</div>
 
-      <div class="brand-logo">
-        क
+      <div>
+        <div class="brand-name">
+          KathaVerse
+        </div>
+
+        <div class="brand-tagline">
+          Stories Beyond Imagination
+        </div>
       </div>
-
-      <div class="brand-text">
-
-        <strong>KathaVerse</strong>
-
-        <span>
-          आपकी कहानी। आपकी दुनिया।
-        </span>
-
-      </div>
-
     </div>
 
-    <div class="header-actions">
+    <div class="top-actions">
 
       <button
-        class="header-button"
-        onclick="navigateTo('search')"
-        aria-label="Search"
+        class="icon-btn"
+        onclick="navigate('search')"
+        title="Search"
       >
         🔍
       </button>
 
       <button
-        class="profile-avatar"
-        id="profileAvatar"
-        onclick="navigateTo('profile')"
+        class="profile-mini"
+        onclick="navigate('profile')"
       >
-        A
+        AS
       </button>
 
     </div>
@@ -80,237 +71,201 @@
   </header>
 
 
-  <!-- =========================
-       MAIN APP
-  ========================== -->
+  <!-- SIDEBAR -->
 
-  <div class="app-layout">
+  <aside
+    id="sidebar"
+    class="sidebar"
+  >
 
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
+    <div class="sidebar-inner">
 
-    <aside
-      class="sidebar"
-      id="sidebar"
-    >
+      <button
+        class="nav-item active"
+        data-page="home"
+        onclick="navigate('home')"
+      >
+        🏠
+        <span>Home</span>
+      </button>
 
-      <nav class="sidebar-navigation">
+      <button
+        class="nav-item"
+        data-page="explore"
+        onclick="navigate('explore')"
+      >
+        🔎
+        <span>Explore</span>
+      </button>
 
-        <button
-          onclick="navigateTo('home')"
-        >
-          <span>⌂</span>
-          <span>Home</span>
-        </button>
+      <button
+        class="nav-item"
+        data-page="stories"
+        onclick="navigate('stories')"
+      >
+        📚
+        <span>Stories</span>
+      </button>
 
+      <button
+        class="nav-item"
+        data-page="roleplay"
+        onclick="navigate('roleplay')"
+      >
+        🎭
+        <span>Roleplay</span>
+      </button>
 
-        <button
-          onclick="navigateTo('explore')"
-        >
-          <span>✦</span>
-          <span>Explore</span>
-        </button>
+      <button
+        class="nav-item"
+        data-page="characters"
+        onclick="navigate('characters')"
+      >
+        🤖
+        <span>AI Characters</span>
+      </button>
 
+      <button
+        class="nav-item"
+        data-page="creator"
+        onclick="navigate('creator')"
+      >
+        ✍️
+        <span>Create Story</span>
+      </button>
 
-        <button
-          onclick="navigateTo('stories')"
-        >
-          <span>📚</span>
-          <span>Stories</span>
-        </button>
+      <button
+        class="nav-item"
+        data-page="saved"
+        onclick="navigate('saved')"
+      >
+        ❤️
+        <span>Saved</span>
+      </button>
 
+      <button
+        class="nav-item"
+        data-page="community"
+        onclick="navigate('community')"
+      >
+        👥
+        <span>Community</span>
+      </button>
 
-        <button
-          onclick="navigateTo('roleplay')"
-        >
-          <span>◈</span>
-          <span>Roleplay</span>
-        </button>
+      <button
+        class="nav-item"
+        data-page="levels"
+        onclick="navigate('levels')"
+      >
+        🏆
+        <span>100 Levels</span>
+      </button>
 
+      <button
+        class="nav-item"
+        data-page="premium"
+        onclick="navigate('premium')"
+      >
+        💎
+        <span>Premium</span>
+      </button>
 
-        <button
-          onclick="navigateTo('characters')"
-        >
-          <span>♙</span>
-          <span>AI Characters</span>
-        </button>
+      <button
+        class="nav-item"
+        data-page="profile"
+        onclick="navigate('profile')"
+      >
+        👤
+        <span>Profile</span>
+      </button>
 
+      <button
+        class="nav-item"
+        data-page="reports"
+        onclick="navigate('reports')"
+      >
+        🚩
+        <span>My Reports</span>
+      </button>
 
-        <button
-          onclick="navigateTo('create')"
-        >
-          <span>＋</span>
-          <span>Create Story</span>
-        </button>
+      <button
+        class="nav-item"
+        data-page="settings"
+        onclick="navigate('settings')"
+      >
+        ⚙️
+        <span>Settings</span>
+      </button>
 
+      <div class="sidebar-divider"></div>
 
-        <button
-          onclick="navigateTo('saved')"
-        >
-          <span>♡</span>
-          <span>Saved</span>
-        </button>
+      <button
+        class="nav-item mature-nav"
+        onclick="openMatureGate()"
+      >
+        🔞
+        <span>30+ Mature</span>
+      </button>
 
+    </div>
 
-        <button
-          onclick="navigateTo('community')"
-        >
-          <span>☷</span>
-          <span>Community</span>
-        </button>
-
-
-        <button
-          onclick="navigateTo('levels')"
-        >
-          <span>★</span>
-          <span>100 Levels</span>
-        </button>
-
-
-        <button
-          onclick="navigateTo('premium')"
-        >
-          <span>♛</span>
-          <span>Premium</span>
-        </button>
-
-
-        <button
-          onclick="navigateTo('profile')"
-        >
-          <span>◉</span>
-          <span>Profile</span>
-        </button>
-
-      </nav>
-
-
-      <!-- SIDEBAR BOTTOM -->
-
-      <div class="sidebar-bottom">
-
-        <button
-          onclick="navigateTo('reports')"
-        >
-          <span>⚑</span>
-          <span>My Reports</span>
-        </button>
-
-
-        <button
-          onclick="navigateTo('settings')"
-        >
-          <span>⚙</span>
-          <span>Settings</span>
-        </button>
-
-      </div>
-
-    </aside>
-
-
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
-
-    <main
-      class="main-content"
-      id="mainContent"
-    >
-
-      <!--
-        JavaScript pages will load here.
-      -->
-
-      <div class="loading-screen">
-
-        <div class="loading-logo">
-          क
-        </div>
-
-        <h2>
-          KathaVerse
-        </h2>
-
-        <p>
-          Stories Beyond Imagination
-        </p>
-
-      </div>
-
-    </main>
-
-  </div>
+  </aside>
 
 
-  <!-- =========================
-       GLOBAL TOAST
-  ========================== -->
+  <!-- MAIN -->
+
+  <main
+    id="mainContent"
+    class="main"
+  ></main>
+
+
+  <!-- TOAST -->
 
   <div
-    class="toast"
     id="toast"
+    class="toast"
   ></div>
 
 
-  <!-- =========================
-       MODAL
-  ========================== -->
+  <!-- MODAL -->
 
   <div
-    class="modal hidden"
     id="globalModal"
+    class="modal-overlay hidden"
+    onclick="closeModalOutside(event)"
   >
 
-    <div class="modal-content">
-
-      <button
-        class="modal-close"
-        onclick="closeModal()"
-      >
-        ×
-      </button>
-
-      <div id="modalBody"></div>
-
-    </div>
+    <div
+      id="modalBox"
+      class="modal-box"
+    ></div>
 
   </div>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+  <!-- FOOTER -->
 
-  <footer class="site-footer">
+  <footer class="footer">
 
-    <div>
-
-      <strong>
-        KathaVerse
-      </strong>
-
-      <span>
-        — Stories Beyond Imagination
-      </span>
-
+    <div class="footer-brand">
+      KathaVerse
     </div>
 
     <div>
-      Created &amp; Developed by
-      <strong>
-        Asheesh Sarkar
-      </strong>
+      Stories Beyond Imagination
+    </div>
+
+    <div>
+      आपकी कहानी। आपकी दुनिया।
+    </div>
+
+    <div class="footer-copy">
+      Created & Developed by Asheesh Sarkar
     </div>
 
   </footer>
 
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
 
   <script src="app.js"></script>
 
