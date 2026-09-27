@@ -1,407 +1,1269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KathaVerse — Stories Beyond Imagination</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<title>KathaVerse — Stories Beyond Imagination</title>
 
-    body {
-      background: #0d0d14;
-      color: #fff;
-    }
+<meta name="description"
+content="KathaVerse is a modern storytelling and character roleplay platform. Discover stories, characters and interactive worlds.">
 
-    header {
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 6%;
-      background: #14141e;
-      border-bottom: 1px solid #292938;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+<style>
 
-    .logo {
-      font-size: 25px;
-      font-weight: 800;
-      background: linear-gradient(90deg, #ff4ecd, #7c5cff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,Arial,sans-serif;
+}
 
-    nav a {
-      color: #bbb;
-      text-decoration: none;
-      margin-left: 25px;
-      font-size: 14px;
-    }
+html{
+scroll-behavior:smooth;
+}
 
-    nav a:hover {
-      color: #fff;
-    }
+body{
+background:#080810;
+color:#fff;
+overflow-x:hidden;
+}
 
-    .hero {
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      padding: 70px 8%;
-      background:
-        radial-gradient(circle at 80% 30%, #542b78 0, transparent 35%),
-        radial-gradient(circle at 20% 70%, #172d63 0, transparent 35%),
-        #0d0d14;
-    }
+a{
+text-decoration:none;
+color:inherit;
+}
 
-    .hero-content {
-      max-width: 700px;
-    }
+button{
+font-family:inherit;
+cursor:pointer;
+}
 
-    .badge {
-      display: inline-block;
-      background: #242033;
-      color: #d8b8ff;
-      padding: 8px 14px;
-      border-radius: 30px;
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
+/* HEADER */
 
-    h1 {
-      font-size: clamp(42px, 8vw, 75px);
-      line-height: 1;
-      margin-bottom: 22px;
-    }
+header{
+height:72px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 6%;
+background:rgba(10,10,18,.88);
+backdrop-filter:blur(15px);
+border-bottom:1px solid #252536;
+position:sticky;
+top:0;
+z-index:100;
+}
 
-    .gradient {
-      background: linear-gradient(90deg, #ff4ecd, #8b6cff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+.logo{
+font-size:25px;
+font-weight:900;
+letter-spacing:-1px;
+background:linear-gradient(90deg,#ff3cac,#8b5cf6);
+-webkit-background-clip:text;
+color:transparent;
+}
 
-    .hero p {
-      color: #aaa;
-      font-size: 18px;
-      line-height: 1.7;
-      max-width: 600px;
-      margin-bottom: 30px;
-    }
+.nav{
+display:flex;
+gap:28px;
+color:#aaa;
+font-size:14px;
+}
 
-    .buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+.nav a:hover{
+color:#fff;
+}
 
-    .btn {
-      padding: 14px 24px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-    }
+.header-buttons{
+display:flex;
+gap:10px;
+}
 
-    .primary {
-      background: linear-gradient(90deg, #ff3fbf, #765cff);
-      color: white;
-    }
+.login{
+padding:10px 17px;
+border:1px solid #363649;
+border-radius:10px;
+color:#ddd;
+}
 
-    .secondary {
-      border: 1px solid #3b3b50;
-      color: white;
-      background: #181824;
-    }
+.signup{
+padding:10px 18px;
+border-radius:10px;
+background:linear-gradient(90deg,#ff3cac,#7c5cff);
+font-weight:bold;
+}
 
-    section {
-      padding: 55px 7%;
-    }
+/* HERO */
 
-    .section-title {
-      font-size: 30px;
-      margin-bottom: 25px;
-    }
+.hero{
+min-height:650px;
+display:flex;
+align-items:center;
+padding:80px 7%;
+position:relative;
+overflow:hidden;
+background:
+radial-gradient(circle at 75% 25%,#4b1d66 0,transparent 32%),
+radial-gradient(circle at 15% 75%,#16285a 0,transparent 30%),
+#080810;
+}
 
-    .section-title span {
-      color: #b78cff;
-    }
+.hero:after{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+right:-180px;
+top:100px;
+border-radius:50%;
+background:linear-gradient(135deg,#ff3cac,#6938ef);
+opacity:.08;
+filter:blur(50px);
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+.hero-content{
+max-width:780px;
+position:relative;
+z-index:2;
+}
 
-    .card {
-      background: #171722;
-      border: 1px solid #292938;
-      border-radius: 18px;
-      padding: 24px;
-      transition: .25s;
-    }
+.badge{
+display:inline-block;
+padding:8px 15px;
+border-radius:50px;
+background:#191525;
+border:1px solid #3b2c52;
+color:#d9b8ff;
+font-size:13px;
+margin-bottom:22px;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #765cff;
-    }
+.hero h1{
+font-size:clamp(48px,8vw,86px);
+line-height:.98;
+letter-spacing:-4px;
+margin-bottom:25px;
+}
 
-    .icon {
-      font-size: 35px;
-      margin-bottom: 15px;
-    }
+.gradient{
+background:linear-gradient(90deg,#ff3cac,#8b5cf6,#4f8cff);
+-webkit-background-clip:text;
+color:transparent;
+}
 
-    .card h3 {
-      margin-bottom: 10px;
-    }
+.hero p{
+font-size:18px;
+line-height:1.7;
+color:#aaa;
+max-width:650px;
+margin-bottom:32px;
+}
 
-    .card p {
-      color: #999;
-      line-height: 1.6;
-      font-size: 14px;
-    }
+.hero-buttons{
+display:flex;
+gap:13px;
+flex-wrap:wrap;
+}
 
-    .story {
-      min-height: 230px;
-      border-radius: 20px;
-      padding: 25px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      background:
-        linear-gradient(transparent, #101019),
-        linear-gradient(135deg, #48206a, #172b55);
-    }
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:14px 23px;
+border-radius:12px;
+font-weight:700;
+border:1px solid transparent;
+}
 
-    .story:nth-child(2) {
-      background:
-        linear-gradient(transparent, #101019),
-        linear-gradient(135deg, #6b293b, #29215c);
-    }
+.primary{
+background:linear-gradient(90deg,#ff3cac,#765cff);
+box-shadow:0 10px 35px rgba(170,70,255,.18);
+}
 
-    .story:nth-child(3) {
-      background:
-        linear-gradient(transparent, #101019),
-        linear-gradient(135deg, #173d45, #54245f);
-    }
+.secondary{
+background:#14141f;
+border-color:#343447;
+}
 
-    .story h3 {
-      font-size: 21px;
-      margin-bottom: 8px;
-    }
+/* SEARCH */
 
-    .story p {
-      color: #ddd;
-      font-size: 13px;
-    }
+.search-box{
+margin:-30px auto 0;
+position:relative;
+z-index:5;
+width:86%;
+max-width:900px;
+background:#13131e;
+border:1px solid #303043;
+padding:12px;
+border-radius:18px;
+display:flex;
+align-items:center;
+gap:10px;
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
 
-    .cta {
-      text-align: center;
-      padding: 70px 20px;
-      background: linear-gradient(135deg, #24153d, #131329);
-    }
+.search-box span{
+font-size:20px;
+padding-left:8px;
+}
 
-    .cta h2 {
-      font-size: 38px;
-      margin-bottom: 15px;
-    }
+.search-box input{
+flex:1;
+background:transparent;
+border:0;
+outline:none;
+color:#fff;
+font-size:15px;
+}
 
-    .cta p {
-      color: #aaa;
-      margin-bottom: 25px;
-    }
+.search-box input::placeholder{
+color:#777;
+}
 
-    footer {
-      padding: 30px 7%;
-      text-align: center;
-      color: #777;
-      background: #09090e;
-      border-top: 1px solid #22222d;
-      font-size: 13px;
-    }
+/* GENERAL */
 
-    @media(max-width: 700px) {
-      header {
-        padding: 0 5%;
-      }
+section{
+padding:75px 7%;
+}
 
-      nav a {
-        margin-left: 10px;
-        font-size: 12px;
-      }
+.section-head{
+display:flex;
+justify-content:space-between;
+align-items:end;
+margin-bottom:28px;
+}
 
-      .hero {
-        padding: 60px 6%;
-      }
+.section-title{
+font-size:32px;
+letter-spacing:-1px;
+}
 
-      .hero p {
-        font-size: 16px;
-      }
+.section-title span{
+color:#b58aff;
+}
 
-      section {
-        padding: 45px 6%;
-      }
+.section-subtitle{
+color:#777;
+font-size:14px;
+margin-top:8px;
+}
 
-      .cta h2 {
-        font-size: 30px;
-      }
-    }
-  </style>
+.view{
+color:#b88cff;
+font-size:14px;
+}
+
+/* CATEGORIES */
+
+.categories{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:13px;
+}
+
+.category{
+background:#13131e;
+border:1px solid #292939;
+border-radius:15px;
+padding:22px 12px;
+text-align:center;
+transition:.25s;
+}
+
+.category:hover{
+transform:translateY(-5px);
+border-color:#795cff;
+background:#181827;
+}
+
+.category-icon{
+font-size:30px;
+margin-bottom:9px;
+}
+
+.category p{
+font-size:13px;
+color:#aaa;
+}
+
+/* STORY CARDS */
+
+.story-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+}
+
+.story{
+height:270px;
+border-radius:19px;
+padding:20px;
+display:flex;
+flex-direction:column;
+justify-content:end;
+overflow:hidden;
+position:relative;
+border:1px solid #292939;
+background:linear-gradient(135deg,#40205d,#182b55);
+transition:.3s;
+}
+
+.story:hover{
+transform:translateY(-6px);
+border-color:#795cff;
+}
+
+.story:nth-child(2){
+background:linear-gradient(135deg,#67263e,#29205c);
+}
+
+.story:nth-child(3){
+background:linear-gradient(135deg,#173e48,#54235e);
+}
+
+.story:nth-child(4){
+background:linear-gradient(135deg,#49301a,#25205b);
+}
+
+.story:before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(transparent 30%,rgba(0,0,0,.8));
+}
+
+.story-content{
+position:relative;
+z-index:2;
+}
+
+.tag{
+display:inline-block;
+font-size:11px;
+padding:5px 9px;
+background:rgba(255,255,255,.12);
+border-radius:20px;
+margin-bottom:9px;
+color:#ddd;
+}
+
+.story h3{
+font-size:20px;
+margin-bottom:7px;
+}
+
+.story p{
+font-size:12px;
+color:#bbb;
+line-height:1.5;
+}
+
+/* FEATURES */
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+}
+
+.feature{
+background:#12121c;
+border:1px solid #292939;
+border-radius:18px;
+padding:25px;
+}
+
+.feature-icon{
+font-size:35px;
+margin-bottom:15px;
+}
+
+.feature h3{
+margin-bottom:9px;
+}
+
+.feature p{
+color:#888;
+font-size:14px;
+line-height:1.6;
+}
+
+/* ROLEPLAY */
+
+.roleplay{
+background:
+radial-gradient(circle at 80% 50%,#352052,transparent 40%),
+#10101a;
+border-top:1px solid #222231;
+border-bottom:1px solid #222231;
+}
+
+.roleplay-box{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:30px;
+align-items:center;
+}
+
+.roleplay-text h2{
+font-size:45px;
+margin-bottom:17px;
+}
+
+.roleplay-text p{
+color:#999;
+line-height:1.7;
+max-width:600px;
+margin-bottom:25px;
+}
+
+.chat-preview{
+background:#171724;
+border:1px solid #333346;
+border-radius:20px;
+padding:20px;
+box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.character{
+display:flex;
+align-items:center;
+gap:12px;
+padding-bottom:16px;
+border-bottom:1px solid #292939;
+}
+
+.avatar{
+width:45px;
+height:45px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#ff3cac,#735cff);
+font-size:21px;
+}
+
+.online{
+color:#54e39a;
+font-size:11px;
+}
+
+.message{
+margin-top:16px;
+padding:12px 14px;
+border-radius:14px;
+background:#242434;
+color:#ccc;
+font-size:13px;
+line-height:1.5;
+}
+
+.message.user{
+background:linear-gradient(90deg,#6338a0,#43308a);
+margin-left:35px;
+}
+
+/* MATURE */
+
+.mature{
+background:
+linear-gradient(90deg,rgba(63,20,49,.45),rgba(25,20,50,.45)),
+#11101a;
+border-top:1px solid #302234;
+border-bottom:1px solid #302234;
+}
+
+.mature-box{
+border:1px solid #55334e;
+background:#18131d;
+border-radius:20px;
+padding:30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:25px;
+}
+
+.mature h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.mature p{
+color:#999;
+max-width:650px;
+line-height:1.6;
+font-size:14px;
+}
+
+.age{
+display:inline-block;
+margin-bottom:12px;
+padding:5px 10px;
+border-radius:7px;
+background:#301928;
+color:#ff9bd5;
+font-size:12px;
+}
+
+/* KIDS */
+
+.kids{
+background:#101a19;
+}
+
+.kids-box{
+border:1px solid #27443d;
+border-radius:20px;
+padding:30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+}
+
+.kids-box p{
+color:#8fa7a1;
+margin-top:8px;
+}
+
+/* PRICING */
+
+.pricing{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.price-card{
+background:#12121d;
+border:1px solid #2a2a3b;
+border-radius:20px;
+padding:28px;
+position:relative;
+}
+
+.price-card.popular{
+border-color:#885cff;
+box-shadow:0 15px 50px rgba(116,75,255,.13);
+}
+
+.popular-label{
+position:absolute;
+right:20px;
+top:18px;
+font-size:11px;
+background:#795cff;
+padding:5px 9px;
+border-radius:20px;
+}
+
+.price{
+font-size:38px;
+font-weight:800;
+margin:17px 0 5px;
+}
+
+.price small{
+font-size:13px;
+color:#777;
+font-weight:normal;
+}
+
+.price-card p{
+color:#888;
+font-size:13px;
+margin-bottom:22px;
+}
+
+.features{
+list-style:none;
+margin-bottom:25px;
+}
+
+.features li{
+padding:8px 0;
+color:#aaa;
+font-size:13px;
+}
+
+.features li:before{
+content:"✓";
+color:#9d7cff;
+margin-right:9px;
+}
+
+/* CTA */
+
+.cta{
+text-align:center;
+padding:90px 20px;
+background:
+radial-gradient(circle,#3d205b,transparent 45%),
+#0c0c14;
+}
+
+.cta h2{
+font-size:45px;
+margin-bottom:13px;
+}
+
+.cta p{
+color:#888;
+margin-bottom:25px;
+}
+
+/* FOOTER */
+
+footer{
+padding:35px 7%;
+border-top:1px solid #222231;
+background:#06060b;
+}
+
+.footer-main{
+display:flex;
+justify-content:space-between;
+gap:30px;
+margin-bottom:30px;
+}
+
+.footer-logo{
+font-size:21px;
+font-weight:800;
+}
+
+.footer-main p{
+color:#777;
+font-size:13px;
+margin-top:8px;
+}
+
+.footer-links{
+display:flex;
+gap:25px;
+color:#777;
+font-size:13px;
+}
+
+.copyright{
+padding-top:20px;
+border-top:1px solid #1d1d28;
+color:#555;
+font-size:12px;
+text-align:center;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.nav{
+display:none;
+}
+
+.categories{
+grid-template-columns:repeat(3,1fr);
+}
+
+.story-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.feature-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.roleplay-box{
+grid-template-columns:1fr;
+}
+
+.pricing{
+grid-template-columns:1fr;
+}
+
+.mature-box,
+.kids-box{
+flex-direction:column;
+align-items:flex-start;
+}
+
+}
+
+@media(max-width:600px){
+
+header{
+padding:0 5%;
+}
+
+.login{
+display:none;
+}
+
+.hero{
+min-height:570px;
+padding:60px 6%;
+}
+
+.hero h1{
+font-size:50px;
+letter-spacing:-2px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+section{
+padding:55px 6%;
+}
+
+.categories{
+grid-template-columns:repeat(2,1fr);
+}
+
+.story-grid{
+grid-template-columns:1fr;
+}
+
+.feature-grid{
+grid-template-columns:1fr;
+}
+
+.section-title{
+font-size:27px;
+}
+
+.roleplay-text h2{
+font-size:35px;
+}
+
+.cta h2{
+font-size:34px;
+}
+
+.footer-main{
+flex-direction:column;
+}
+
+.footer-links{
+flex-wrap:wrap;
+}
+
+.search-box{
+width:90%;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">KathaVerse</div>
+<header>
 
-    <nav>
-      <a href="#stories">Stories</a>
-      <a href="#characters">Characters</a>
-      <a href="#roleplay">Roleplay</a>
-    </nav>
-  </header>
+<a href="#" class="logo">KathaVerse</a>
 
-  <main>
+<nav class="nav">
+<a href="#stories">Stories</a>
+<a href="#characters">Characters</a>
+<a href="#roleplay">Roleplay</a>
+<a href="#pricing">Premium</a>
+</nav>
 
-    <section class="hero">
-      <div class="hero-content">
+<div class="header-buttons">
+<a href="#" class="login">Login</a>
+<a href="#" class="signup">Join</a>
+</div>
 
-        <div class="badge">✨ Enter a world of imagination</div>
-
-        <h1>
-          Your Story.<br>
-          <span class="gradient">Your World.</span>
-        </h1>
-
-        <p>
-          Discover stories, meet unforgettable characters and create
-          your own interactive adventures on KathaVerse.
-        </p>
-
-        <div class="buttons">
-          <a href="#stories" class="btn primary">Explore Stories</a>
-          <a href="#roleplay" class="btn secondary">Start Roleplay</a>
-        </div>
-
-      </div>
-    </section>
+</header>
 
 
-    <section id="stories">
+<!-- HERO -->
 
-      <h2 class="section-title">
-        Featured <span>Stories</span>
-      </h2>
+<section class="hero">
 
-      <div class="cards">
+<div class="hero-content">
 
-        <div class="story">
-          <h3>The Last Moon</h3>
-          <p>A mysterious journey beyond the stars.</p>
-        </div>
+<div class="badge">
+✨ Welcome to KathaVerse
+</div>
 
-        <div class="story">
-          <h3>Forbidden Hearts</h3>
-          <p>Two souls. One impossible story.</p>
-        </div>
+<h1>
+Enter a world of<br>
+<span class="gradient">stories & imagination.</span>
+</h1>
 
-        <div class="story">
-          <h3>Shadow City</h3>
-          <p>Secrets are waiting in the darkness.</p>
-        </div>
+<p>
+Read unforgettable stories, meet unique characters,
+create your own worlds and experience interactive
+roleplay — all in one place.
+</p>
 
-      </div>
+<div class="hero-buttons">
 
-    </section>
+<a href="#stories" class="btn primary">
+📚 Explore Stories
+</a>
 
+<a href="#roleplay" class="btn secondary">
+🎭 Start Roleplay
+</a>
 
-    <section id="characters">
+</div>
 
-      <h2 class="section-title">
-        Meet Your <span>Characters</span>
-      </h2>
+</div>
 
-      <div class="cards">
-
-        <div class="card">
-          <div class="icon">🧙</div>
-          <h3>Fantasy</h3>
-          <p>Heroes, villains, magical worlds and legendary adventures.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">❤️</div>
-          <h3>Romance</h3>
-          <p>Emotional stories and unforgettable fictional relationships.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🕵️</div>
-          <h3>Mystery</h3>
-          <p>Solve mysteries and uncover secrets hidden inside the story.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🚀</div>
-          <h3>Sci-Fi</h3>
-          <p>Explore futuristic worlds, technology and distant galaxies.</p>
-        </div>
-
-      </div>
-
-    </section>
+</section>
 
 
-    <section id="roleplay">
+<!-- SEARCH -->
 
-      <h2 class="section-title">
-        Interactive <span>Roleplay</span>
-      </h2>
+<div class="search-box">
 
-      <div class="card">
+<span>🔍</span>
 
-        <div class="icon">💬</div>
+<input
+type="text"
+placeholder="Search stories, characters, genres..."
+>
 
-        <h3>Become Part of the Story</h3>
-
-        <p>
-          Choose a character, enter a fictional world and continue
-          the story through interactive conversations.
-        </p>
-
-        <br>
-
-        <a href="#" class="btn primary">Start Creating</a>
-
-      </div>
-
-    </section>
+</div>
 
 
-    <section class="cta">
+<!-- CATEGORIES -->
 
-      <h2>Create Your Own Universe</h2>
+<section>
 
-      <p>
-        Write stories. Create characters. Build worlds.
-      </p>
+<div class="section-head">
 
-      <a href="#" class="btn primary">Join KathaVerse</a>
+<div>
+<h2 class="section-title">
+Explore <span>Categories</span>
+</h2>
 
-    </section>
+<p class="section-subtitle">
+Find a world that matches your mood.
+</p>
+</div>
 
-  </main>
+</div>
+
+<div class="categories">
+
+<div class="category">
+<div class="category-icon">💕</div>
+<p>Romance</p>
+</div>
+
+<div class="category">
+<div class="category-icon">🎓</div>
+<p>School & College</p>
+</div>
+
+<div class="category">
+<div class="category-icon">🕵️</div>
+<p>Detective</p>
+</div>
+
+<div class="category">
+<div class="category-icon">👻</div>
+<p>Horror</p>
+</div>
+
+<div class="category">
+<div class="category-icon">⚔️</div>
+<p>Fantasy</p>
+</div>
+
+<div class="category">
+<div class="category-icon">🚀</div>
+<p>Sci-Fi</p>
+</div>
+
+</div>
+
+</section>
 
 
-  <footer>
-    © 2026 KathaVerse — Stories Beyond Imagination
-  </footer>
+<!-- STORIES -->
+
+<section id="stories">
+
+<div class="section-head">
+
+<div>
+<h2 class="section-title">
+Trending <span>Stories</span>
+</h2>
+
+<p class="section-subtitle">
+Stories people are discovering right now.
+</p>
+</div>
+
+<a class="view" href="#">View all →</a>
+
+</div>
+
+<div class="story-grid">
+
+<div class="story">
+<div class="story-content">
+<span class="tag">💕 Romance</span>
+<h3>When We Met Again</h3>
+<p>A story of memories, friendship and unexpected love.</p>
+</div>
+</div>
+
+<div class="story">
+<div class="story-content">
+<span class="tag">🕵️ Mystery</span>
+<h3>The Hidden Room</h3>
+<p>A strange discovery leads to a dangerous mystery.</p>
+</div>
+</div>
+
+<div class="story">
+<div class="story-content">
+<span class="tag">⚔️ Fantasy</span>
+<h3>Kingdom of Shadows</h3>
+<p>Enter a world where magic has disappeared.</p>
+</div>
+</div>
+
+<div class="story">
+<div class="story-content">
+<span class="tag">💍 Drama</span>
+<h3>The Unexpected Marriage</h3>
+<p>Two strangers. One decision that changes everything.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section id="characters">
+
+<div class="section-head">
+
+<div>
+<h2 class="section-title">
+Why <span>KathaVerse?</span>
+</h2>
+
+<p class="section-subtitle">
+More than reading. Become part of the story.
+</p>
+</div>
+
+</div>
+
+<div class="feature-grid">
+
+<div class="feature">
+<div class="feature-icon">🤖</div>
+<h3>AI Characters</h3>
+<p>Meet fictional characters with unique personalities and conversations.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">✍️</div>
+<h3>Create Stories</h3>
+<p>Build your own stories, characters and fictional worlds.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🎭</div>
+<h3>Roleplay</h3>
+<p>Step inside a story and interact with characters.</p>
+</div>
+
+<div class="feature">
+<div class="feature-icon">🧠</div>
+<h3>Character Memory</h3>
+<p>Characters can remember important parts of an ongoing fictional conversation.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ROLEPLAY -->
+
+<section class="roleplay" id="roleplay">
+
+<div class="roleplay-box">
+
+<div class="roleplay-text">
+
+<h2>
+Your character.<br>
+Your conversation.
+</h2>
+
+<p>
+Choose a fictional character, enter a fictional world
+and decide where the story goes. Your choices can
+change the direction of the adventure.
+</p>
+
+<a href="#" class="btn primary">
+🎭 Create Roleplay
+</a>
+
+</div>
+
+
+<div class="chat-preview">
+
+<div class="character">
+
+<div class="avatar">🌙</div>
+
+<div>
+<strong>Aria</strong>
+<div class="online">● Online</div>
+</div>
+
+</div>
+
+<div class="message">
+Aria looks at the mysterious door.
+“Are you sure you want to open it?”
+</div>
+
+<div class="message user">
+“Yes. Let's find out what's behind it.”
+</div>
+
+<div class="message">
+The door slowly opens...
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MATURE -->
+
+<section class="mature">
+
+<div class="mature-box">
+
+<div>
+
+<span class="age">30+ MATURE AUDIENCE</span>
+
+<h2>Mature Stories & Roleplay</h2>
+
+<p>
+A separate mature-audience space for adult fictional
+romance, relationship stories and mature themes.
+Age-gating and community safety rules apply.
+</p>
+
+</div>
+
+<a href="#" class="btn secondary">
+Enter 30+ Zone →
+</a>
+
+</div>
+
+</section>
+
+
+<!-- KIDS -->
+
+<section class="kids">
+
+<div class="kids-box">
+
+<div>
+
+<h2>🌈 Kids Stories</h2>
+
+<p>
+Fun, educational and family-friendly stories created
+for younger readers.
+</p>
+
+</div>
+
+<a href="#stories" class="btn secondary">
+Explore Kids Stories
+</a>
+
+</div>
+
+</section>
+
+
+<!-- PRICING -->
+
+<section id="pricing">
+
+<div class="section-head">
+
+<div>
+
+<h2 class="section-title">
+Simple <span>Premium</span>
+</h2>
+
+<p class="section-subtitle">
+Start free. Upgrade when you want more.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="pricing">
+
+
+<div class="price-card">
+
+<h3>Free</h3>
+
+<div class="price">
+₹0
+<small>/ forever</small>
+</div>
+
+<p>Perfect for exploring KathaVerse.</p>
+
+<ul class="features">
+<li>100 messages per day</li>
+<li>Read public stories</li>
+<li>Explore characters</li>
+<li>Basic roleplay</li>
+</ul>
+
+<a href="#" class="btn secondary">
+Start Free
+</a>
+
+</div>
+
+
+<div class="price-card popular">
+
+<span class="popular-label">
+POPULAR
+</span>
+
+<h3>Monthly</h3>
+
+<div class="price">
+₹99
+<small>/ month</small>
+</div>
+
+<p>Full KathaVerse experience.</p>
+
+<ul class="features">
+<li>Unlimited-style messaging*</li>
+<li>Premium characters</li>
+<li>Premium stories</li>
+<li>Advanced roleplay</li>
+<li>Create characters</li>
+</ul>
+
+<a href="#" class="btn primary">
+Get Premium
+</a>
+
+</div>
+
+
+<div class="price-card">
+
+<h3>Yearly</h3>
+
+<div class="price">
+₹999
+<small>/ year</small>
+</div>
+
+<p>For regular storytellers.</p>
+
+<ul class="features">
+<li>Everything in Monthly</li>
+<li>Premium content</li>
+<li>Character creation</li>
+<li>Story creation</li>
+<li>Priority features</li>
+</ul>
+
+<a href="#" class="btn secondary">
+Choose Yearly
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>Ready to enter KathaVerse?</h2>
+
+<p>
+Your next story is waiting.
+</p>
+
+<a href="#" class="btn primary">
+✨ Create Your Account
+</a>
+
+</section>
+
+
+<footer>
+
+<div class="footer-main">
+
+<div>
+
+<div class="footer-logo">KathaVerse</div>
+
+<p>Stories Beyond Imagination.</p>
+
+</div>
+
+<div class="footer-links">
+<a href="#">About</a>
+<a href="#">Community</a>
+<a href="#">Safety</a>
+<a href="#">Privacy</a>
+<a href="#">Terms</a>
+</div>
+
+</div>
+
+<div class="copyright">
+© 2026 KathaVerse. All rights reserved.
+</div>
+
+</footer>
 
 </body>
 </html>
