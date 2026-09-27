@@ -2,799 +2,689 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b0b12">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09090f">
 <title>KathaVerse — Stories Beyond Imagination</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --bg:#09090f;
-  --card:#14141d;
-  --card2:#101019;
-  --border:#292936;
-  --text:#fff;
-  --muted:#a5a5b2;
-  --purple:#8b5cf6;
-  --pink:#ec4899;
-  --green:#22c55e;
-  --gold:#f59e0b;
+ --bg:#09090f;
+ --card:#14141d;
+ --card2:#101019;
+ --border:#292936;
+ --text:#fff;
+ --muted:#a5a5b2;
+ --purple:#8b5cf6;
+ --pink:#ec4899;
+ --green:#22c55e;
+ --gold:#f59e0b;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
-  line-height:1.5;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Arial,Helvetica,sans-serif;
+ line-height:1.5;
 }
 
-button,
-input,
-textarea,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
 
 .container{
-  width:92%;
-  max-width:1150px;
-  margin:auto;
+ width:92%;
+ max-width:1150px;
+ margin:auto;
 }
 
-/* HEADER */
-
 header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(9,9,15,.94);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
+ position:sticky;
+ top:0;
+ z-index:100;
+ background:rgba(9,9,15,.95);
+ backdrop-filter:blur(12px);
+ border-bottom:1px solid var(--border);
 }
 
 .nav{
-  min-height:65px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+ min-height:65px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:15px;
 }
 
 .logo{
-  font-size:25px;
-  font-weight:900;
-  white-space:nowrap;
+ font-size:25px;
+ font-weight:900;
 }
 
-.logo span{
-  color:var(--purple);
-}
+.logo span{color:var(--purple)}
 
 .nav-links{
-  display:flex;
-  gap:20px;
+ display:flex;
+ gap:20px;
 }
 
 .nav-links a{
-  color:#c7c7d2;
-  text-decoration:none;
-  font-size:14px;
+ color:#bbb;
+ text-decoration:none;
+ font-size:14px;
 }
 
-.nav-links a:hover{
-  color:#fff;
+.login{
+ border:0;
+ color:white;
+ background:linear-gradient(135deg,var(--purple),var(--pink));
+ padding:10px 16px;
+ border-radius:10px;
+ font-weight:bold;
 }
-
-.login-btn,
-.primary-btn{
-  border:0;
-  color:#fff;
-  background:linear-gradient(135deg,var(--purple),var(--pink));
-  padding:11px 17px;
-  border-radius:10px;
-  font-weight:700;
-}
-
-.menu-btn{
-  display:none;
-  border:1px solid var(--border);
-  background:var(--card);
-  color:#fff;
-  padding:8px 11px;
-  border-radius:8px;
-}
-
-/* HERO */
 
 .hero{
-  padding:75px 0 55px;
-  text-align:center;
+ padding:75px 0 55px;
+ text-align:center;
 }
 
 .badge{
-  display:inline-block;
-  background:#211634;
-  color:#c084fc;
-  border:1px solid #392653;
-  padding:7px 13px;
-  border-radius:50px;
-  font-size:13px;
-  margin-bottom:18px;
+ display:inline-block;
+ padding:6px 12px;
+ border-radius:30px;
+ background:#211634;
+ border:1px solid #3b2754;
+ color:#c084fc;
+ font-size:12px;
+ margin-bottom:15px;
 }
 
 .hero h1{
-  font-size:clamp(36px,7vw,64px);
-  line-height:1.05;
-  margin-bottom:18px;
+ font-size:clamp(38px,7vw,65px);
+ line-height:1.05;
+ margin-bottom:17px;
 }
 
 .gradient{
-  background:linear-gradient(90deg,#c084fc,#f472b6);
-  -webkit-background-clip:text;
-  color:transparent;
+ background:linear-gradient(90deg,#c084fc,#f472b6);
+ -webkit-background-clip:text;
+ color:transparent;
 }
 
 .hero p{
-  max-width:700px;
-  margin:auto;
-  color:var(--muted);
-  font-size:17px;
+ max-width:720px;
+ margin:auto;
+ color:var(--muted);
+ font-size:17px;
 }
 
-.hero-actions{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-top:25px;
-  flex-wrap:wrap;
+.actions{
+ display:flex;
+ justify-content:center;
+ gap:10px;
+ margin-top:25px;
+ flex-wrap:wrap;
 }
 
-.secondary-btn{
-  background:var(--card);
-  color:#fff;
-  border:1px solid var(--border);
-  padding:11px 17px;
-  border-radius:10px;
-  font-weight:700;
+.primary,.secondary{
+ padding:11px 17px;
+ border-radius:10px;
+ font-weight:bold;
 }
 
-/* SECTIONS */
-
-section{
-  padding:45px 0;
+.primary{
+ border:0;
+ color:white;
+ background:linear-gradient(135deg,var(--purple),var(--pink));
 }
+
+.secondary{
+ border:1px solid var(--border);
+ background:var(--card);
+ color:white;
+}
+
+section{padding:42px 0}
 
 .section-title{
-  font-size:28px;
-  margin-bottom:8px;
+ font-size:28px;
+ margin-bottom:7px;
 }
 
 .section-subtitle{
-  color:var(--muted);
-  margin-bottom:25px;
+ color:var(--muted);
+ margin-bottom:23px;
 }
 
-/* CATEGORIES */
-
-.categories{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:12px;
+.grid{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:16px;
 }
 
-.category{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:18px 10px;
-  text-align:center;
-  transition:.2s;
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:17px;
+ overflow:hidden;
 }
 
-.category:hover{
-  border-color:#6d45b5;
-  transform:translateY(-2px);
+.cover{
+ height:185px;
+ padding:15px;
+ display:flex;
+ align-items:flex-end;
+ background:
+ linear-gradient(to top,rgba(0,0,0,.9),transparent),
+ radial-gradient(circle at 40% 25%,#8b5cf6,#181228 50%,#050509);
 }
 
-.category-icon{
-  font-size:25px;
-  margin-bottom:7px;
+.cover.horror{
+ background:
+ linear-gradient(to top,rgba(0,0,0,.9),transparent),
+ radial-gradient(circle at 60% 25%,#991b1b,#160d10 50%,#050505);
 }
 
-.category small{
-  color:#aaa;
+.cover.detective{
+ background:
+ linear-gradient(to top,rgba(0,0,0,.9),transparent),
+ radial-gradient(circle at 50% 20%,#475569,#111827 50%,#050505);
 }
 
-/* STORY CARDS */
+.card-body{padding:17px}
 
-.story-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.story-card{
-  overflow:hidden;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:17px;
-}
-
-.story-image{
-  height:190px;
-  display:flex;
-  align-items:flex-end;
-  padding:17px;
-  background:
-    linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.05)),
-    radial-gradient(circle at 30% 25%,#7c3aed,#171329 45%,#09090f);
-}
-
-.story-image.horror{
-  background:
-    linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.1)),
-    radial-gradient(circle at 65% 25%,#991b1b,#111 48%,#050505);
-}
-
-.story-image.detective{
-  background:
-    linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.1)),
-    radial-gradient(circle at 50% 25%,#334155,#111827 48%,#050505);
-}
-
-.story-image span{
-  background:rgba(0,0,0,.55);
-  border:1px solid rgba(255,255,255,.15);
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:12px;
-}
-
-.story-content{
-  padding:17px;
-}
-
-.story-content h3{
-  margin-bottom:6px;
-}
-
-.story-content p{
-  color:#999;
-  font-size:14px;
+.card-body p{
+ color:#999;
+ font-size:14px;
+ margin-top:6px;
 }
 
 .meta{
-  display:flex;
-  justify-content:space-between;
-  color:#888;
-  font-size:12px;
-  margin-top:13px;
+ display:flex;
+ justify-content:space-between;
+ color:#777;
+ font-size:12px;
+ margin-top:13px;
 }
 
-/* CREATE STORY */
+/* categories */
 
-.create-box{
-  background:
-    radial-gradient(circle at 90% 10%,#24143c,transparent 35%),
-    var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:28px;
+.categories{
+ display:grid;
+ grid-template-columns:repeat(6,1fr);
+ gap:10px;
 }
 
-textarea,
-input,
-select{
-  width:100%;
-  background:#0c0c13;
-  color:#fff;
-  border:1px solid #30303d;
-  border-radius:10px;
-  padding:13px;
-  outline:none;
+.category{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:13px;
+ padding:17px 8px;
+ text-align:center;
+}
+
+.category-icon{
+ font-size:25px;
+ margin-bottom:5px;
+}
+
+/* creator */
+
+.creator{
+ background:
+ radial-gradient(circle at 90% 10%,#28133d,transparent 35%),
+ var(--card);
+ border:1px solid var(--border);
+ border-radius:20px;
+ padding:25px;
+}
+
+textarea,input,select{
+ width:100%;
+ background:#0c0c13;
+ color:white;
+ border:1px solid #30303d;
+ border-radius:10px;
+ padding:13px;
+ outline:none;
 }
 
 textarea{
-  min-height:130px;
-  resize:vertical;
+ min-height:125px;
+ resize:vertical;
 }
 
-.form-label{
-  display:block;
-  color:#ddd;
-  font-size:14px;
-  margin:17px 0 7px;
+label{
+ display:block;
+ color:#ddd;
+ margin:15px 0 7px;
+ font-size:14px;
 }
 
 .options{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
 }
 
 .option{
-  border:1px solid var(--border);
-  background:#101019;
-  color:#ccc;
-  padding:9px 12px;
-  border-radius:9px;
+ background:#101019;
+ color:#bbb;
+ border:1px solid var(--border);
+ border-radius:9px;
+ padding:8px 12px;
 }
 
 .option.active{
-  border-color:var(--purple);
-  background:#281b40;
-  color:#fff;
+ background:#281b40;
+ color:white;
+ border-color:var(--purple);
 }
-
-.create-action{
-  margin-top:20px;
-}
-
-/* CREATED STORY */
 
 .generated{
-  display:none;
-  margin-top:22px;
-  background:#101019;
-  border:1px solid #33264a;
-  border-radius:17px;
-  overflow:hidden;
+ display:none;
+ margin-top:20px;
+ background:var(--card2);
+ border:1px solid #392750;
+ border-radius:16px;
+ overflow:hidden;
 }
 
 .generated-cover{
-  height:260px;
-  display:flex;
-  align-items:flex-end;
-  padding:22px;
-  background:
-    linear-gradient(to top,rgba(0,0,0,.9),transparent),
-    radial-gradient(circle at 50% 30%,#a855f7,#21152f 48%,#07070c);
+ height:260px;
+ padding:20px;
+ display:flex;
+ align-items:flex-end;
+ background:
+ linear-gradient(to top,rgba(0,0,0,.9),transparent),
+ radial-gradient(circle at 50% 25%,#a855f7,#21142f 48%,#050509);
 }
 
-.generated-cover h3{
-  font-size:27px;
-}
+.generated-cover h3{font-size:27px}
 
-.generated-info{
-  padding:20px;
-}
+.generated-body{padding:20px}
 
-.generated-info p{
-  color:#aaa;
-}
+.generated-body p{color:#aaa}
 
-.generated-buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-
-/* POINTS */
+/* points */
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:13px;
 }
 
 .stat{
-  background:var(--card);
-  border:1px solid var(--border);
-  padding:19px;
-  border-radius:15px;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:14px;
+ padding:18px;
 }
 
-.stat-icon{
-  font-size:22px;
-}
+.stat-icon{font-size:22px}
 
 .stat-number{
-  font-size:25px;
-  font-weight:bold;
-  margin-top:5px;
+ font-size:25px;
+ font-weight:bold;
+ margin:3px 0;
 }
 
-.stat small{
-  color:#999;
-}
+.stat small{color:#888}
 
 .level-box{
-  margin-top:17px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:19px;
+ margin-top:15px;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:14px;
+ padding:18px;
 }
 
 .level-head{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:9px;
+ display:flex;
+ justify-content:space-between;
+ margin-bottom:8px;
 }
 
-.level-progress{
-  height:9px;
-  background:#292933;
-  border-radius:20px;
-  overflow:hidden;
+.level-track{
+ height:9px;
+ background:#292933;
+ border-radius:20px;
+ overflow:hidden;
 }
 
-.level-progress div{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,var(--purple),var(--pink));
+.level-fill{
+ width:0%;
+ height:100%;
+ background:linear-gradient(90deg,var(--purple),var(--pink));
 }
 
-/* SEASON */
+/* level unlocks */
 
-.season-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:23px;
-  margin-top:20px;
+.levels{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:10px;
 }
 
-.story-heading{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
+.level-item{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:12px;
+ padding:13px;
+ text-align:center;
+}
+
+.level-item.unlocked{
+ border-color:#6540a0;
+ background:#1d1530;
+}
+
+.level-num{
+ color:#c084fc;
+ font-weight:bold;
+}
+
+/* seasons */
+
+.season{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:20px;
+ padding:22px;
 }
 
 .session{
-  margin-top:14px;
-  padding:17px;
-  background:var(--card2);
-  border:1px solid var(--border);
-  border-radius:13px;
+ background:var(--card2);
+ border:1px solid var(--border);
+ border-radius:13px;
+ padding:16px;
+ margin-top:13px;
 }
 
 .session-row{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  align-items:center;
-}
-
-.session-title{
-  font-weight:bold;
+ display:flex;
+ justify-content:space-between;
+ gap:12px;
+ align-items:center;
 }
 
 .session-desc{
-  color:#999;
-  font-size:13px;
-  margin-top:5px;
+ color:#888;
+ font-size:13px;
+ margin-top:5px;
 }
 
 .status{
-  white-space:nowrap;
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:12px;
-}
-
-.done{
-  background:#12351f;
-  color:#4ade80;
+ padding:5px 9px;
+ border-radius:20px;
+ font-size:12px;
+ white-space:nowrap;
 }
 
 .playing{
-  background:#2a1c44;
-  color:#c084fc;
+ background:#281b40;
+ color:#c084fc;
+}
+
+.done{
+ background:#12351f;
+ color:#4ade80;
 }
 
 .locked{
-  background:#292930;
-  color:#888;
+ background:#292930;
+ color:#888;
 }
 
 .progress{
-  height:8px;
-  background:#292933;
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:14px;
+ height:8px;
+ background:#292933;
+ border-radius:20px;
+ overflow:hidden;
+ margin-top:13px;
 }
 
-.progress div{
-  width:0%;
-  height:100%;
-  background:linear-gradient(90deg,var(--purple),var(--pink));
+.progress-fill{
+ width:0%;
+ height:100%;
+ background:linear-gradient(90deg,var(--purple),var(--pink));
 }
 
 .progress-info{
-  display:flex;
-  justify-content:space-between;
-  color:#888;
-  font-size:12px;
-  margin-top:7px;
+ display:flex;
+ justify-content:space-between;
+ color:#777;
+ font-size:12px;
+ margin-top:7px;
 }
 
 .memory{
-  margin-top:17px;
-  padding:17px;
-  border-radius:13px;
-  background:#0d1723;
-  border:1px solid #22374d;
+ background:#0d1723;
+ border:1px solid #22374d;
+ border-radius:13px;
+ padding:16px;
+ margin-top:15px;
 }
 
-.memory h4{
-  margin-bottom:8px;
-}
+.memory p{color:#aab8c8}
 
-.memory p{
-  color:#aab8c8;
-}
-
-/* CHAT */
+/* chat */
 
 .chat{
-  display:none;
-  margin-top:20px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:20px;
+ display:none;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:17px;
+ padding:18px;
+ margin-top:15px;
 }
 
 .message{
-  max-width:84%;
-  padding:12px 14px;
-  border-radius:13px;
-  margin-bottom:12px;
-  line-height:1.6;
+ max-width:84%;
+ padding:12px 14px;
+ border-radius:13px;
+ margin-bottom:10px;
 }
 
-.ai-message{
-  background:#211a2e;
-  border:1px solid #352646;
+.ai{
+ background:#211a2e;
+ border:1px solid #352646;
 }
 
-.user-message{
-  background:#27273a;
-  margin-left:auto;
+.user{
+ background:#27273a;
+ margin-left:auto;
 }
 
 .chat-input{
-  display:flex;
-  gap:10px;
-  margin-top:15px;
+ display:flex;
+ gap:9px;
+ margin-top:15px;
 }
 
 .complete{
-  display:none;
-  margin-top:18px;
-  background:#112419;
-  border:1px solid #275b37;
-  padding:17px;
-  border-radius:13px;
+ display:none;
+ background:#112419;
+ border:1px solid #275b37;
+ border-radius:12px;
+ padding:15px;
+ margin-top:15px;
 }
 
-.complete strong{
-  color:#4ade80;
+/* comments */
+
+.comments{
+ margin-top:20px;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:20px;
 }
 
-/* FEATURES */
-
-.feature-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+.comment{
+ padding:13px 0;
+ border-bottom:1px solid var(--border);
 }
 
-.feature{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:19px;
+.comment:last-child{border-bottom:0}
+
+.comment-user{
+ font-weight:bold;
+ font-size:14px;
 }
 
-.feature-icon{
-  font-size:27px;
-  margin-bottom:9px;
+.comment-text{
+ color:#aaa;
+ font-size:14px;
+ margin-top:3px;
 }
 
-.feature p{
-  color:#999;
-  font-size:13px;
-  margin-top:6px;
+.comment-actions{
+ display:flex;
+ gap:15px;
+ margin-top:7px;
 }
 
-/* AGE SECTIONS */
+.comment-actions button{
+ background:none;
+ border:0;
+ color:#888;
+ font-size:12px;
+}
+
+.comment-input{
+ display:flex;
+ gap:8px;
+ margin-top:15px;
+}
+
+/* report */
+
+.report-box{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:17px;
+ padding:20px;
+}
+
+.report-box p{
+ color:#999;
+ margin:7px 0 15px;
+}
+
+/* age */
+
+.age-grid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:15px;
+}
 
 .age-card{
-  border-radius:20px;
-  padding:25px;
-  border:1px solid var(--border);
+ padding:24px;
+ border:1px solid var(--border);
+ border-radius:19px;
 }
 
 .kids{
-  background:linear-gradient(135deg,#172b20,#101a14);
+ background:linear-gradient(135deg,#172b20,#101813);
 }
 
 .mature{
-  background:linear-gradient(135deg,#281622,#130e13);
+ background:linear-gradient(135deg,#29151f,#130d12);
 }
 
 .age-card p{
-  color:#aaa;
-  margin:8px 0 16px;
+ color:#aaa;
+ margin:7px 0 15px;
 }
 
-/* PRICING */
+/* pricing */
 
 .pricing{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:13px;
 }
 
 .price{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:17px;
-  padding:22px;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:16px;
+ padding:20px;
 }
 
 .price.featured{
-  border-color:#7746bd;
-}
-
-.price h3{
-  margin-bottom:7px;
+ border-color:#7546bd;
 }
 
 .price-value{
-  font-size:30px;
-  font-weight:800;
-  margin:13px 0;
+ font-size:30px;
+ font-weight:800;
+ margin:12px 0;
 }
 
 .price ul{
-  list-style:none;
-  color:#aaa;
-  font-size:13px;
-  line-height:2;
+ list-style:none;
+ color:#aaa;
+ font-size:13px;
+ line-height:2;
 }
 
 .price button{
-  margin-top:17px;
-  width:100%;
+ width:100%;
+ margin-top:15px;
 }
 
-/* FOOTER */
+/* footer */
 
 footer{
-  border-top:1px solid var(--border);
-  margin-top:40px;
-  padding:40px 0 25px;
-  color:#777;
-  text-align:center;
+ border-top:1px solid var(--border);
+ padding:40px 0 25px;
+ margin-top:30px;
+ text-align:center;
+ color:#777;
 }
 
 .footer-links{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:17px;
-  margin-bottom:20px;
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:16px;
+ margin-bottom:17px;
 }
 
 .footer-links a{
-  color:#999;
-  text-decoration:none;
-  font-size:13px;
+ color:#999;
+ text-decoration:none;
+ font-size:13px;
 }
 
-/* MOBILE */
-
-@media(max-width:850px){
-
-  .nav-links{
-    display:none;
-  }
-
-  .menu-btn{
-    display:block;
-  }
-
-  .categories{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .story-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .feature-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .pricing{
-    grid-template-columns:1fr 1fr;
-  }
+@media(max-width:900px){
+ .nav-links{display:none}
+ .categories{grid-template-columns:repeat(3,1fr)}
+ .grid{grid-template-columns:1fr 1fr}
+ .stats{grid-template-columns:1fr 1fr}
+ .levels{grid-template-columns:repeat(4,1fr)}
+ .pricing{grid-template-columns:1fr 1fr}
 }
 
 @media(max-width:600px){
-
-  .hero{
-    padding:55px 0 35px;
-  }
-
-  section{
-    padding:32px 0;
-  }
-
-  .categories{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .story-grid{
-    grid-template-columns:1fr;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .feature-grid{
-    grid-template-columns:1fr;
-  }
-
-  .pricing{
-    grid-template-columns:1fr;
-  }
-
-  .story-heading,
-  .session-row{
-    align-items:flex-start;
-  }
-
-  .session-row{
-    flex-direction:column;
-  }
-
-  .chat-input{
-    flex-direction:column;
-  }
-
-  .chat-input button{
-    width:100%;
-  }
-
-  .create-box{
-    padding:19px;
-  }
+ .hero{padding:55px 0 35px}
+ .categories{grid-template-columns:repeat(2,1fr)}
+ .grid{grid-template-columns:1fr}
+ .stats{grid-template-columns:1fr 1fr}
+ .levels{grid-template-columns:repeat(3,1fr)}
+ .pricing{grid-template-columns:1fr}
+ .age-grid{grid-template-columns:1fr}
+ .session-row{align-items:flex-start;flex-direction:column}
+ .chat-input,.comment-input{flex-direction:column}
+ .creator,.season{padding:18px}
 }
 
 @media(prefers-reduced-motion:reduce){
-
-  html{
-    scroll-behavior:auto;
-  }
-
-  *{
-    transition:none!important;
-  }
+ html{scroll-behavior:auto}
 }
 </style>
 </head>
@@ -802,28 +692,25 @@ footer{
 <body>
 
 <header>
-  <div class="container nav">
+<div class="container nav">
 
-    <div class="logo">
-      Katha<span>Verse</span>
-    </div>
+<div class="logo">
+Katha<span>Verse</span>
+</div>
 
-    <nav class="nav-links">
-      <a href="#stories">कहानियाँ</a>
-      <a href="#create">कहानी बनाएँ</a>
-      <a href="#points">Points</a>
-      <a href="#premium">Premium</a>
-    </nav>
+<nav class="nav-links">
+<a href="#stories">Stories</a>
+<a href="#create">Create</a>
+<a href="#levels">Levels</a>
+<a href="#premium">Premium</a>
+</nav>
 
-    <div>
-      <button class="menu-btn">☰</button>
-      <button class="login-btn"
-      onclick="alert('Real login system backend ke saath connect hoga.')">
-        Login
-      </button>
-    </div>
+<button class="login"
+onclick="alert('Real login backend ke saath connect hoga.')">
+Login
+</button>
 
-  </div>
+</div>
 </header>
 
 
@@ -832,492 +719,641 @@ footer{
 <!-- HERO -->
 
 <section class="hero">
+<div class="container">
 
-  <div class="container">
+<div class="badge">✨ Stories Beyond Imagination</div>
 
-    <div class="badge">
-      ✨ Stories Beyond Imagination
-    </div>
+<h1>
+आपकी कहानी।<br>
+<span class="gradient">आपकी दुनिया।</span>
+</h1>
 
-    <h1>
-      आपकी कहानी।<br>
-      <span class="gradient">आपकी दुनिया।</span>
-    </h1>
+<p>
+Stories padhiye, AI ke saath roleplay kijiye,
+apni story banaiye aur KathaVerse mein Level 100 tak journey complete kijiye.
+</p>
 
-    <p>
-      कहानी पढ़िए, AI के साथ roleplay कीजिए या अपना छोटा सा idea देकर
-      अपनी पूरी interactive story बनाइए।
-    </p>
+<div class="actions">
 
-    <div class="hero-actions">
+<button class="primary"
+onclick="goTo('create')">
+✍️ Story Banaiye
+</button>
 
-      <button class="primary-btn"
-      onclick="document.getElementById('create').scrollIntoView()">
-        ✨ अपनी Story बनाएँ
-      </button>
+<button class="secondary"
+onclick="goTo('stories')">
+📖 Stories Explore Karein
+</button>
 
-      <button class="secondary-btn"
-      onclick="document.getElementById('stories').scrollIntoView()">
-        📖 Stories देखें
-      </button>
+</div>
 
-    </div>
-
-  </div>
-
+</div>
 </section>
 
 
 <!-- CATEGORIES -->
 
 <section>
-
 <div class="container">
 
-  <h2 class="section-title">Explore Stories</h2>
+<h2 class="section-title">📚 Explore</h2>
 
-  <p class="section-subtitle">
-    अपनी पसंद की दुनिया चुनिए।
-  </p>
+<p class="section-subtitle">
+500+ experiences se shuruaat — Stories aur Roleplays.
+</p>
 
-  <div class="categories">
+<div class="categories">
 
-    <div class="category">
-      <div class="category-icon">❤️</div>
-      Romance
-    </div>
-
-    <div class="category">
-      <div class="category-icon">🎓</div>
-      School / College
-    </div>
-
-    <div class="category">
-      <div class="category-icon">🔎</div>
-      Detective
-    </div>
-
-    <div class="category">
-      <div class="category-icon">👻</div>
-      Horror
-    </div>
-
-    <div class="category">
-      <div class="category-icon">🧙</div>
-      Fantasy
-    </div>
-
-    <div class="category">
-      <div class="category-icon">🚀</div>
-      Sci-Fi
-    </div>
-
-  </div>
+<div class="category">❤️<br>Romance</div>
+<div class="category">🎓<br>College</div>
+<div class="category">🔎<br>Detective</div>
+<div class="category">👻<br>Horror</div>
+<div class="category">🧙<br>Fantasy</div>
+<div class="category">🚀<br>Sci-Fi</div>
+<div class="category">🎭<br>Drama</div>
+<div class="category">😂<br>Comedy</div>
+<div class="category">🗺️<br>Adventure</div>
+<div class="category">👨‍👩‍👧<br>Family</div>
+<div class="category">🌈<br>Kids</div>
+<div class="category">🌙<br>30+</div>
 
 </div>
 
+</div>
 </section>
 
 
 <!-- STORIES -->
 
 <section id="stories">
-
 <div class="container">
 
-  <h2 class="section-title">
-    🔥 Trending Stories
-  </h2>
+<h2 class="section-title">🔥 Trending Stories</h2>
 
-  <p class="section-subtitle">
-    AI Visual Stories के साथ।
-  </p>
+<p class="section-subtitle">
+AI visual stories aur interactive sessions.
+</p>
 
-  <div class="story-grid">
+<div class="grid">
 
-    <article class="story-card">
+<div class="card">
 
-      <div class="story-image">
-        <span>✨ AI Visual Story</span>
-      </div>
+<div class="cover">
+<span class="badge">✨ AI Visual</span>
+</div>
 
-      <div class="story-content">
+<div class="card-body">
+<h3>❤️ Karan & Priya</h3>
+<p>
+Ek mulaqat jo dheere-dheere mohabbat ban gayi.
+</p>
 
-        <h3>❤️ Karan & Priya</h3>
-
-        <p>
-          Ek mulaqat jo dheere-dheere ek kahani ban gayi.
-        </p>
-
-        <div class="meta">
-          <span>💬 Interactive</span>
-          <span>❤️ 2.4K</span>
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <article class="story-card">
-
-      <div class="story-image horror">
-        <span>✨ AI Visual Story</span>
-      </div>
-
-      <div class="story-content">
-
-        <h3>👻 Woh Purana Ghar</h3>
-
-        <p>
-          Raat ke 2 baje ghar ke andar se awaaz aayi...
-        </p>
-
-        <div class="meta">
-          <span>👻 Horror</span>
-          <span>❤️ 1.8K</span>
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <article class="story-card">
-
-      <div class="story-image detective">
-        <span>✨ AI Visual Story</span>
-      </div>
-
-      <div class="story-content">
-
-        <h3>🔎 Aakhri Surag</h3>
-
-        <p>
-          Ek murder mystery jiska jawab kisi ke paas nahi.
-        </p>
-
-        <div class="meta">
-          <span>🔎 Detective</span>
-          <span>❤️ 1.2K</span>
-        </div>
-
-      </div>
-
-    </article>
-
-  </div>
+<div class="meta">
+<span>👁 12.4K</span>
+<span>❤️ 2.4K</span>
+<span>💬 342</span>
+</div>
+</div>
 
 </div>
 
+
+<div class="card">
+
+<div class="cover horror">
+<span class="badge">👻 AI Visual</span>
+</div>
+
+<div class="card-body">
+<h3>👻 Woh Purana Ghar</h3>
+<p>
+Raat ke 2 baje ghar se ajeeb awaaz aayi.
+</p>
+
+<div class="meta">
+<span>👁 9.2K</span>
+<span>❤️ 1.8K</span>
+<span>💬 218</span>
+</div>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="cover detective">
+<span class="badge">🔎 AI Visual</span>
+</div>
+
+<div class="card-body">
+<h3>Aakhri Surag</h3>
+<p>
+Ek mystery jiska jawab kisi ke paas nahi.
+</p>
+
+<div class="meta">
+<span>👁 7.6K</span>
+<span>❤️ 1.2K</span>
+<span>💬 176</span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- CREATE STORY -->
+<!-- STORY CREATOR -->
 
 <section id="create">
-
 <div class="container">
 
-  <h2 class="section-title">
-    ✍️ Apni Story Banaiye
-  </h2>
+<h2 class="section-title">✍️ Apni Story Banaiye</h2>
 
-  <p class="section-subtitle">
-    Aapko writer banne ki zaroorat nahi। Bas idea likhiye — AI usse story mein badlega.
-  </p>
+<p class="section-subtitle">
+Level 5 ke baad users apni story create aur publish kar sakenge.
+</p>
 
-  <div class="create-box">
+<div class="creator">
 
-    <label class="form-label">
-      💡 Story ka idea
-    </label>
+<label>💡 Story Idea</label>
 
-    <textarea id="storyIdea"
-    placeholder="Example: Karan ek normal ladka hai jo college mein Priya se milta hai. Dheere-dheere Karan ko Priya pasand aane lagti hai..."></textarea>
+<textarea id="storyIdea"
+placeholder="Example: Karan college mein Priya se milta hai. Dheere-dheere dono friends bante hain..."></textarea>
 
 
-    <label class="form-label">
-      🌐 Story Language
-    </label>
+<label>🌐 Language</label>
 
-    <div class="options" id="languageOptions">
+<div class="options">
 
-      <button class="option active"
-      onclick="selectOption(this,'language')">
-        🇮🇳 Hindi
-      </button>
+<button class="option active"
+onclick="choose(this)">🇮🇳 Hindi</button>
 
-      <button class="option"
-      onclick="selectOption(this,'language')">
-        💬 Hinglish
-      </button>
+<button class="option"
+onclick="choose(this)">💬 Hinglish</button>
 
-      <button class="option"
-      onclick="selectOption(this,'language')">
-        🇬🇧 English
-      </button>
+<button class="option"
+onclick="choose(this)">🇬🇧 English</button>
 
-      <button class="option"
-      onclick="selectOption(this,'language')">
-        🤖 Auto Detect
-      </button>
-
-    </div>
-
-
-    <label class="form-label">
-      🎭 Story Type
-    </label>
-
-    <div class="options">
-
-      <button class="option active"
-      onclick="selectOption(this,'genre')">
-        ❤️ Romance
-      </button>
-
-      <button class="option"
-      onclick="selectOption(this,'genre')">
-        👻 Horror
-      </button>
-
-      <button class="option"
-      onclick="selectOption(this,'genre')">
-        🔎 Detective
-      </button>
-
-      <button class="option"
-      onclick="selectOption(this,'genre')">
-        🧙 Fantasy
-      </button>
-
-      <button class="option"
-      onclick="selectOption(this,'genre')">
-        🚀 Sci-Fi
-      </button>
-
-      <button class="option"
-      onclick="selectOption(this,'genre')">
-        🎭 Drama
-      </button>
-
-    </div>
-
-
-    <div class="create-action">
-
-      <button class="primary-btn"
-      onclick="createStory()">
-        ✨ AI Se Story Banaye
-      </button>
-
-    </div>
-
-
-    <!-- GENERATED STORY -->
-
-    <div id="generatedStory" class="generated">
-
-      <div class="generated-cover">
-
-        <div>
-
-          <div class="badge">
-            ✨ AI Generated Visual
-          </div>
-
-          <h3 id="generatedTitle">
-            आपकी कहानी
-          </h3>
-
-        </div>
-
-      </div>
-
-      <div class="generated-info">
-
-        <p id="generatedDescription">
-          AI aapke idea ko interactive story mein convert karega.
-        </p>
-
-        <div class="generated-buttons">
-
-          <button class="primary-btn"
-          onclick="startGeneratedStory()">
-            ▶ Start Story
-          </button>
-
-          <button class="secondary-btn">
-            🖼️ Generate Cover
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
+<button class="option"
+onclick="choose(this)">🤖 Auto</button>
 
 </div>
 
+
+<label>🎭 Genre</label>
+
+<div class="options">
+
+<button class="option active"
+onclick="choose(this)">❤️ Romance</button>
+
+<button class="option"
+onclick="choose(this)">👻 Horror</button>
+
+<button class="option"
+onclick="choose(this)">🔎 Detective</button>
+
+<button class="option"
+onclick="choose(this)">🧙 Fantasy</button>
+
+<button class="option"
+onclick="choose(this)">🚀 Sci-Fi</button>
+
+<button class="option"
+onclick="choose(this)">🎭 Drama</button>
+
+</div>
+
+
+<div style="margin-top:18px">
+
+<button class="primary"
+onclick="createStory()">
+✨ AI Se Story Banaye
+</button>
+
+</div>
+
+
+<div id="generated" class="generated">
+
+<div class="generated-cover">
+
+<div>
+
+<div class="badge">✨ AI Generated Visual</div>
+
+<h3 id="generatedTitle">
+Aapki Nayi Story
+</h3>
+
+</div>
+
+</div>
+
+<div class="generated-body">
+
+<p id="generatedText"></p>
+
+<div class="actions"
+style="justify-content:flex-start">
+
+<button class="primary"
+onclick="openChat()">
+▶ Story Start Karein
+</button>
+
+<button class="secondary">
+🖼️ AI Cover
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 </section>
 
 
 <!-- POINTS -->
 
-<section id="points">
-
+<section>
 <div class="container">
 
-  <h2 class="section-title">
-    🏆 Katha Points
-  </h2>
+<h2 class="section-title">🏆 Katha Points</h2>
 
-  <p class="section-subtitle">
-    Story create karo, roleplay karo, read karo — aur level up karo।
-  </p>
+<p class="section-subtitle">
+Har activity se progress — Level 100 tak.
+</p>
 
-  <div class="stats">
+<div class="stats">
 
-    <div class="stat">
-      <div class="stat-icon">⭐</div>
-      <div class="stat-number" id="points">0</div>
-      <small>Katha Points</small>
-    </div>
+<div class="stat">
+<div class="stat-icon">⭐</div>
+<div class="stat-number" id="points">0</div>
+<small>Katha Points</small>
+</div>
 
-    <div class="stat">
-      <div class="stat-icon">🏅</div>
-      <div class="stat-number" id="level">1</div>
-      <small>Current Level</small>
-    </div>
+<div class="stat">
+<div class="stat-icon">🏅</div>
+<div class="stat-number" id="level">1</div>
+<small>Level</small>
+</div>
 
-    <div class="stat">
-      <div class="stat-icon">🔥</div>
-      <div class="stat-number">1</div>
-      <small>Day Streak</small>
-    </div>
+<div class="stat">
+<div class="stat-icon">🔥</div>
+<div class="stat-number">1</div>
+<small>Day Streak</small>
+</div>
 
-    <div class="stat">
-      <div class="stat-icon">✍️</div>
-      <div class="stat-number" id="storiesCreated">0</div>
-      <small>Stories Created</small>
-    </div>
-
-  </div>
-
-
-  <div class="level-box">
-
-    <div class="level-head">
-
-      <strong>
-        Level <span id="levelText">1</span>
-      </strong>
-
-      <span id="levelProgressText">
-        0 / 100 KP
-      </span>
-
-    </div>
-
-    <div class="level-progress">
-      <div id="levelProgress"></div>
-    </div>
-
-  </div>
+<div class="stat">
+<div class="stat-icon">✍️</div>
+<div class="stat-number" id="created">0</div>
+<small>Stories Created</small>
+</div>
 
 </div>
 
+
+<div class="level-box">
+
+<div class="level-head">
+
+<strong>
+Level <span id="levelNumber">1</span>
+</strong>
+
+<span id="levelKP">0 / 100 KP</span>
+
+</div>
+
+<div class="level-track">
+<div class="level-fill" id="levelFill"></div>
+</div>
+
+</div>
+
+</div>
 </section>
 
 
-<!-- SEASON SYSTEM -->
+<!-- LEVELS -->
 
-<section>
-
+<section id="levels">
 <div class="container">
 
-  <h2 class="section-title">
-    🎬 Story Seasons & Sessions
-  </h2>
+<h2 class="section-title">🎮 Level 1 → 100</h2>
 
-  <p class="section-subtitle">
-    Har 500 messages ke baad kahani ka next chapter unlock hoga।
-  </p>
+<p class="section-subtitle">
+Har level par naya unlock, feature ya reward.
+</p>
 
+<div class="levels" id="levelGrid"></div>
 
-  <div class="season-card">
-
-    <div class="story-heading">
-
-      <div>
-
-        <h3>
-          ❤️ Karan & Priya — Ek Adhoori Kahani
-        </h3>
-
-        <p class="story-description">
-          Connected interactive story series.
-        </p>
-
-      </div>
-
-      <span class="status playing">
-        Season 1
-      </span>
-
-    </div>
+</div>
+</section>
 
 
-    <!-- SESSION 1 -->
+<!-- SEASON -->
 
-    <div class="session">
+<section>
+<div class="container">
 
-      <div class="session-row">
+<h2 class="section-title">🎬 Story Seasons</h2>
 
-        <div>
-
-          <div class="session-title">
-            Session 1 — Pehla Pyaar
-          </div>
-
-          <div class="session-desc">
-            Karan aur Priya ki mulaqat, dosti aur pehli mohabbat.
-          </div>
-
-        </div>
-
-        <span id="sessionStatus"
-        class="status playing">
-          ▶ Playing
-        </span>
-
-      </div>
+<p class="section-subtitle">
+Har Session 500 messages tak chalega aur next Session previous memory se continue hoga.
+</p>
 
 
-      <div class="progress">
+<div class="season">
 
-        <div id="sessionProgress"></div>
+<h3>❤️ Karan & Priya — Ek Adhoori Kahani</h3>
 
-      </div>
-
-
-      <div class="progress-info">
-
-        <span id="messageCounter">
-          0 / 500 Messages
-        </span>
-
-        <span id="messagePercent">
-          0%
-        </span>
-
-      </div>
+<p style="color:#888;margin-top:5px">
+Season 1
+</p>
 
 
-      <button class="primary-btn"
-      style="margin-top:14px"
-      onclick="openChat()">
-    
+<div class="session">
+
+<div class="session-row">
+
+<div>
+<strong>Session 1 — Pehla Pyaar</strong>
+
+<div class="session-desc">
+Mulaqat → Dosti → Proposal → Relationship
+</div>
+</div>
+
+<span id="sessionStatus"
+class="status playing">
+▶ Playing
+</span>
+
+</div>
+
+
+<div class="progress">
+<div id="sessionFill"
+class="progress-fill"></div>
+</div>
+
+
+<div class="progress-info">
+
+<span id="counter">
+0 / 500
+</span>
+
+<span id="percent">
+0%
+</span>
+
+</div>
+
+
+<button class="primary"
+style="margin-top:13px"
+onclick="openChat()">
+Continue Story
+</button>
+
+</div>
+
+
+<div class="session">
+
+<div class="session-row">
+
+<div>
+<strong>Session 2 — Shaadi Ka Faisla</strong>
+
+<div class="session-desc">
+Karan shaadi ke liye kehta hai, Priya mana kar deti hai.
+</div>
+</div>
+
+<span id="session2"
+class="status locked">
+🔒 Locked
+</span>
+
+</div>
+
+</div>
+
+
+<div class="session">
+
+<div class="session-row">
+
+<div>
+<strong>Session 3 — Dooriyan</strong>
+
+<div class="session-desc">
+Session 2 ke ending se kahani ka naya mod.
+</div>
+
+</div>
+
+<span class="status locked">
+🔒 Locked
+</span>
+
+</div>
+
+</div>
+
+
+<div class="memory">
+
+<h4>🧠 Story Memory</h4>
+
+<p>
+Karan aur Priya ki mulaqat hui. Dono friends bane.
+Karan ne Priya ko propose kiya aur relationship shuru hua.
+Important events next Session mein available rahenge.
+</p>
+
+</div>
+
+
+<div id="chat" class="chat">
+
+<div class="message ai">
+<b>🤖 KathaVerse AI</b><br><br>
+Karan ne aaj finally Priya ke saamne apne dil ki baat keh di...
+Priya kuch pal tak chup rahi aur phir dheere se muskura di.
+</div>
+
+<div id="messages"></div>
+
+<div class="chat-input">
+
+<input id="chatInput"
+placeholder="Kahani mein kya hona chahiye...?">
+
+<button class="primary"
+onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+
+<div class="progress-info">
+<span id="chatCounter">0 / 500</span>
+<span>Session 1</span>
+</div>
+
+
+<div id="complete"
+class="complete">
+
+<strong>🎉 Session Complete!</strong>
+
+<p style="color:#aaa;margin-top:6px">
+Ab Session 2 unlock kiya ja sakta hai.
+</p>
+
+<button class="primary"
+style="margin-top:10px"
+onclick="unlockSession()">
+🔓 Unlock Session 2
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- COMMENTS -->
+
+<section>
+<div class="container">
+
+<h2 class="section-title">💬 Story Comments</h2>
+
+<p class="section-subtitle">
+Readers story par apni opinion aur reactions share kar sakte hain.
+</p>
+
+<div class="comments">
+
+<div id="commentList">
+
+<div class="comment">
+
+<div class="comment-user">
+👤 Rahul
+</div>
+
+<div class="comment-text">
+Ye story ka last scene bahut interesting tha 🔥
+</div>
+
+<div class="comment-actions">
+
+<button onclick="likeComment(this)">
+👍 12
+</button>
+
+<button>
+💬 Reply
+</button>
+
+<button onclick="report()">
+🚩 Report
+</button>
+
+</div>
+
+</div>
+
+
+<div class="comment">
+
+<div class="comment-user">
+👤 Neha
+</div>
+
+<div class="comment-text">
+Priya ne aisa decision kyun liya? Next Session ka wait hai.
+</div>
+
+<div class="comment-actions">
+
+<button onclick="likeComment(this)">
+👍 8
+</button>
+
+<button>
+💬 Reply
+</button>
+
+<button onclick="report()">
+🚩 Report
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="comment-input">
+
+<input id="commentInput"
+placeholder="Apna comment likhiye...">
+
+<button class="primary"
+onclick="addComment()">
+Comment
+</button>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- REPORT -->
+
+<section>
+<div class="container">
+
+<h2 class="section-title">🚩 Complaint / Report</h2>
+
+<div class="report-box">
+
+<p>
+Agar kisi Story, Roleplay, Comment ya AI response mein problem lage,
+to report submit kar sakte hain.
+</p>
+
+<select id="reportReason">
+
+<option>Wrong / inappropriate content</option>
+<option>Spam</option>
+<option>Harassment</option>
+<option>Wrong age category</option>
+<option>AI response problem</option>
