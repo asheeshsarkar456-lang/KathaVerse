@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KathaVerse — Stories Beyond Imagination</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0d0d14;
+      color: #fff;
+    }
+
+    header {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      background: #14141e;
+      border-bottom: 1px solid #292938;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #ff4ecd, #7c5cff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    nav a {
+      color: #bbb;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .hero {
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      padding: 70px 8%;
+      background:
+        radial-gradient(circle at 80% 30%, #542b78 0, transparent 35%),
+        radial-gradient(circle at 20% 70%, #172d63 0, transparent 35%),
+        #0d0d14;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #242033;
+      color: #d8b8ff;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 75px);
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #ff4ecd, #8b6cff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: #aaa;
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .primary {
+      background: linear-gradient(90deg, #ff3fbf, #765cff);
+      color: white;
+    }
+
+    .secondary {
+      border: 1px solid #3b3b50;
+      color: white;
+      background: #181824;
+    }
+
+    section {
+      padding: 55px 7%;
+    }
+
+    .section-title {
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
+
+    .section-title span {
+      color: #b78cff;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #171722;
+      border: 1px solid #292938;
+      border-radius: 18px;
+      padding: 24px;
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #765cff;
+    }
+
+    .icon {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #999;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .story {
+      min-height: 230px;
+      border-radius: 20px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background:
+        linear-gradient(transparent, #101019),
+        linear-gradient(135deg, #48206a, #172b55);
+    }
+
+    .story:nth-child(2) {
+      background:
+        linear-gradient(transparent, #101019),
+        linear-gradient(135deg, #6b293b, #29215c);
+    }
+
+    .story:nth-child(3) {
+      background:
+        linear-gradient(transparent, #101019),
+        linear-gradient(135deg, #173d45, #54245f);
+    }
+
+    .story h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+
+    .story p {
+      color: #ddd;
+      font-size: 13px;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 70px 20px;
+      background: linear-gradient(135deg, #24153d, #131329);
+    }
+
+    .cta h2 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+
+    footer {
+      padding: 30px 7%;
+      text-align: center;
+      color: #777;
+      background: #09090e;
+      border-top: 1px solid #22222d;
+      font-size: 13px;
+    }
+
+    @media(max-width: 700px) {
+      header {
+        padding: 0 5%;
+      }
+
+      nav a {
+        margin-left: 10px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 45px 6%;
+      }
+
+      .cta h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">KathaVerse</div>
+
+    <nav>
+      <a href="#stories">Stories</a>
+      <a href="#characters">Characters</a>
+      <a href="#roleplay">Roleplay</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-content">
+
+        <div class="badge">✨ Enter a world of imagination</div>
+
+        <h1>
+          Your Story.<br>
+          <span class="gradient">Your World.</span>
+        </h1>
+
+        <p>
+          Discover stories, meet unforgettable characters and create
+          your own interactive adventures on KathaVerse.
+        </p>
+
+        <div class="buttons">
+          <a href="#stories" class="btn primary">Explore Stories</a>
+          <a href="#roleplay" class="btn secondary">Start Roleplay</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="stories">
+
+      <h2 class="section-title">
+        Featured <span>Stories</span>
+      </h2>
+
+      <div class="cards">
+
+        <div class="story">
+          <h3>The Last Moon</h3>
+          <p>A mysterious journey beyond the stars.</p>
+        </div>
+
+        <div class="story">
+          <h3>Forbidden Hearts</h3>
+          <p>Two souls. One impossible story.</p>
+        </div>
+
+        <div class="story">
+          <h3>Shadow City</h3>
+          <p>Secrets are waiting in the darkness.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section id="characters">
+
+      <h2 class="section-title">
+        Meet Your <span>Characters</span>
+      </h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="icon">🧙</div>
+          <h3>Fantasy</h3>
+          <p>Heroes, villains, magical worlds and legendary adventures.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">❤️</div>
+          <h3>Romance</h3>
+          <p>Emotional stories and unforgettable fictional relationships.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🕵️</div>
+          <h3>Mystery</h3>
+          <p>Solve mysteries and uncover secrets hidden inside the story.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🚀</div>
+          <h3>Sci-Fi</h3>
+          <p>Explore futuristic worlds, technology and distant galaxies.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section id="roleplay">
+
+      <h2 class="section-title">
+        Interactive <span>Roleplay</span>
+      </h2>
+
+      <div class="card">
+
+        <div class="icon">💬</div>
+
+        <h3>Become Part of the Story</h3>
+
+        <p>
+          Choose a character, enter a fictional world and continue
+          the story through interactive conversations.
+        </p>
+
+        <br>
+
+        <a href="#" class="btn primary">Start Creating</a>
+
+      </div>
+
+    </section>
+
+
+    <section class="cta">
+
+      <h2>Create Your Own Universe</h2>
+
+      <p>
+        Write stories. Create characters. Build worlds.
+      </p>
+
+      <a href="#" class="btn primary">Join KathaVerse</a>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 KathaVerse — Stories Beyond Imagination
+  </footer>
+
+</body>
+</html>
