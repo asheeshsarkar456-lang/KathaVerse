@@ -1,1162 +1,775 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080812">
-
-  <title>KathaVerse — आपकी कहानी, आपकी दुनिया</title>
-
-  <meta name="description"
-        content="KathaVerse — हिंदी कहानियों, AI किरदारों और इंटरैक्टिव रोलप्ले की दुनिया।">
-
-  <style>
-    :root{
-      --bg:#080812;
-      --card:#12121d;
-      --card2:#181824;
-      --border:#29293b;
-      --text:#fff;
-      --muted:#9999aa;
-      --pink:#ff3cac;
-      --purple:#795cff;
-    }
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      min-height:100vh;
-      background:var(--bg);
-      color:var(--text);
-      font-family:
-        system-ui,
-        -apple-system,
-        "Noto Sans Devanagari",
-        "Mangal",
-        Arial,
-        sans-serif;
-      overflow-x:hidden;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    button,
-    input{
-      font:inherit;
-    }
-
-    /* HEADER */
-
-    .header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      height:68px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 6%;
-      background:rgba(8,8,18,.95);
-      border-bottom:1px solid var(--border);
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-    }
-
-    .logo{
-      font-size:24px;
-      font-weight:900;
-      background:linear-gradient(90deg,var(--pink),var(--purple));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      white-space:nowrap;
-    }
-
-    .nav{
-      display:flex;
-      gap:24px;
-      color:#aaaaba;
-      font-size:14px;
-    }
-
-    .nav a:hover{
-      color:#fff;
-    }
-
-    .header-buttons{
-      display:flex;
-      gap:8px;
-    }
-
-    .login,
-    .join{
-      padding:9px 14px;
-      border-radius:10px;
-      font-size:13px;
-    }
-
-    .login{
-      border:1px solid var(--border);
-      color:#ddd;
-    }
-
-    .join{
-      background:linear-gradient(90deg,var(--pink),var(--purple));
-      font-weight:700;
-    }
-
-    /* HERO */
-
-    .hero{
-      min-height:600px;
-      display:flex;
-      align-items:center;
-      padding:80px 7%;
-      position:relative;
-      overflow:hidden;
-
-      background:
-        radial-gradient(
-          circle at 80% 25%,
-          #45205d 0,
-          transparent 31%
-        ),
-        radial-gradient(
-          circle at 15% 80%,
-          #162a5d 0,
-          transparent 28%
-        ),
-        var(--bg);
-    }
-
-    .hero-content{
-      max-width:760px;
-      position:relative;
-      z-index:2;
-    }
-
-    .badge{
-      display:inline-block;
-      margin-bottom:20px;
-      padding:7px 13px;
-      border:1px solid #3d3152;
-      border-radius:30px;
-      background:#181322;
-      color:#d8baff;
-      font-size:12px;
-    }
-
-    .hero h1{
-      margin-bottom:22px;
-      font-size:clamp(46px,8vw,82px);
-      line-height:1.02;
-      letter-spacing:-3px;
-    }
-
-    .gradient{
-      background:
-        linear-gradient(
-          90deg,
-          var(--pink),
-          #a36aff,
-          #668cff
-        );
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .hero p{
-      max-width:650px;
-      margin-bottom:30px;
-      color:var(--muted);
-      font-size:17px;
-      line-height:1.8;
-    }
-
-    .hero-buttons{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-
-    .button{
-      min-height:46px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:0 20px;
-      border-radius:11px;
-      font-size:14px;
-      font-weight:700;
-    }
-
-    .primary{
-      background:linear-gradient(90deg,var(--pink),var(--purple));
-    }
-
-    .secondary{
-      background:#14141f;
-      border:1px solid #363648;
-      color:#ddd;
-    }
-
-    /* SEARCH */
-
-    .search-area{
-      width:88%;
-      max-width:850px;
-      margin:-28px auto 0;
-      position:relative;
-      z-index:5;
-    }
-
-    .search{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:14px 16px;
-      border:1px solid #303044;
-      border-radius:16px;
-      background:#12121d;
-      box-shadow:0 15px 40px rgba(0,0,0,.3);
-    }
-
-    .search input{
-      width:100%;
-      border:0;
-      outline:0;
-      background:transparent;
-      color:white;
-      font-size:14px;
-    }
-
-    .search input::placeholder{
-      color:#686878;
-    }
-
-    /* SECTION */
-
-    .section{
-      padding:70px 7%;
-    }
-
-    .heading{
-      margin-bottom:27px;
-    }
-
-    .heading h2{
-      font-size:31px;
-    }
-
-    .heading span{
-      color:#b18aff;
-    }
-
-    .heading p{
-      margin-top:6px;
-      color:#777788;
-      font-size:13px;
-    }
-
-    /* CATEGORIES */
-
-    .category-grid{
-      display:grid;
-      grid-template-columns:repeat(6,1fr);
-      gap:12px;
-    }
-
-    .category{
-      min-height:112px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:10px;
-      border:1px solid var(--border);
-      border-radius:15px;
-      background:var(--card);
-      transition:.2s;
-      text-align:center;
-    }
-
-    .category:hover{
-      transform:translateY(-3px);
-      border-color:#6d58a9;
-    }
-
-    .category-icon{
-      font-size:29px;
-    }
-
-    .category-name{
-      color:#c0c0cc;
-      font-size:12px;
-    }
-
-    /* STORIES */
-
-    .story-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:17px;
-    }
-
-    .story{
-      min-height:260px;
-      display:flex;
-      align-items:flex-end;
-      padding:20px;
-      position:relative;
-      overflow:hidden;
-      border:1px solid var(--border);
-      border-radius:18px;
-
-      background:
-        linear-gradient(145deg,#43205e,#192c55);
-
-      transition:.2s;
-    }
-
-    .story:nth-child(2){
-      background:
-        linear-gradient(145deg,#692940,#29215d);
-    }
-
-    .story:nth-child(3){
-      background:
-        linear-gradient(145deg,#17434b,#51235e);
-    }
-
-    .story:nth-child(4){
-      background:
-        linear-gradient(145deg,#54351d,#25205a);
-    }
-
-    .story:hover{
-      transform:translateY(-4px);
-      border-color:#6e5bb0;
-    }
-
-    .story::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(
-          transparent 25%,
-          rgba(5,5,10,.92)
-        );
-    }
-
-    .story-content{
-      position:relative;
-      z-index:2;
-    }
-
-    .tag{
-      display:inline-block;
-      margin-bottom:8px;
-      padding:4px 8px;
-      border-radius:20px;
-      background:rgba(255,255,255,.12);
-      color:#ddd;
-      font-size:10px;
-    }
-
-    .story h3{
-      margin-bottom:5px;
-      font-size:19px;
-    }
-
-    .story p{
-      color:#b5b5c1;
-      font-size:12px;
-    }
-
-    /* FEATURES */
-
-    .feature-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
-    }
-
-    .feature{
-      padding:23px;
-      border:1px solid var(--border);
-      border-radius:17px;
-      background:var(--card);
-    }
-
-    .feature-icon{
-      margin-bottom:12px;
-      font-size:31px;
-    }
-
-    .feature h3{
-      margin-bottom:7px;
-      font-size:17px;
-    }
-
-    .feature p{
-      color:#858594;
-      font-size:13px;
-      line-height:1.7;
-    }
-
-    /* AI ROLEPLAY */
-
-    .roleplay{
-      border-top:1px solid #20202d;
-      border-bottom:1px solid #20202d;
-
-      background:
-        radial-gradient(
-          circle at 80% 50%,
-          #34204d,
-          transparent 38%
-        ),
-        #0d0d17;
-    }
-
-    .roleplay-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:45px;
-      align-items:center;
-    }
-
-    .roleplay h2{
-      margin-bottom:15px;
-      font-size:43px;
-      line-height:1.15;
-    }
-
-    .roleplay-description{
-      max-width:600px;
-      margin-bottom:25px;
-      color:#9999a8;
-      line-height:1.8;
-    }
-
-    .chat{
-      padding:20px;
-      border:1px solid #353548;
-      border-radius:19px;
-      background:#151520;
-      box-shadow:0 15px 50px rgba(0,0,0,.3);
-    }
-
-    .character{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding-bottom:15px;
-      border-bottom:1px solid #292938;
-    }
-
-    .avatar{
-      width:45px;
-      height:45px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:50%;
-      background:linear-gradient(135deg,var(--pink),var(--purple));
-      font-size:21px;
-    }
-
-    .character-name{
-      font-size:14px;
-      font-weight:700;
-    }
-
-    .status{
-      color:#48d49a;
-      font-size:10px;
-    }
-
-    .message{
-      margin-top:14px;
-      padding:12px 13px;
-      border-radius:13px;
-      background:#252535;
-      color:#c7c7d0;
-      font-size:12px;
-    }
-
-    .message.user{
-      margin-left:28px;
-      background:#49358a;
-      color:#eee;
-    }
-
-    /* MATURE */
-
-    .mature{
-      background:#100d16;
-    }
-
-    .mature-box{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:25px;
-      padding:29px;
-      border:1px solid #513349;
-      border-radius:19px;
-      background:#17121b;
-    }
-
-    .age{
-      display:inline-block;
-      margin-bottom:9px;
-      padding:4px 8px;
-      border-radius:6px;
-      background:#321a2b;
-      color:#ff9bd5;
-      font-size:10px;
-      font-weight:700;
-    }
-
-    .mature h2{
-      margin-bottom:8px;
-      font-size:25px;
-    }
-
-    .mature p{
-      max-width:680px;
-      color:#9696a3;
-      font-size:13px;
-      line-height:1.7;
-    }
-
-    /* KIDS */
-
-    .kids-box{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:25px;
-      padding:29px;
-      border:1px solid #29443e;
-      border-radius:19px;
-      background:#101a19;
-    }
-
-    .kids-box h2{
-      font-size:25px;
-    }
-
-    .kids-box p{
-      margin-top:6px;
-      color:#8da49e;
-      font-size:13px;
-    }
-
-    /* PRICING */
-
-    .pricing{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:17px;
-    }
-
-    .price-card{
-      position:relative;
-      padding:27px;
-      border:1px solid var(--border);
-      border-radius:19px;
-      background:var(--card);
-    }
-
-    .popular{
-      border-color:#795cff;
-      box-shadow:0 15px 50px rgba(121,92,255,.12);
-    }
-
-    .popular-label{
-      position:absolute;
-      right:17px;
-      top:17px;
-      padding:4px 8px;
-      border-radius:15px;
-      background:#795cff;
-      font-size:9px;
-      font-weight:700;
-    }
-
-    .price{
-      margin:14px 0 5px;
-      font-size:38px;
-      font-weight:900;
-    }
-
-    .price small{
-      color:#777788;
-      font-size:12px;
-      font-weight:400;
-    }
-
-    .price-card > p{
-      min-height:38px;
-      color:#858593;
-      font-size:12px;
-    }
-
-    .features{
-      margin:20px 0;
-      list-style:none;
-    }
-
-    .features li{
-      padding:6px 0;
-      color:#aaaab7;
-      font-size:12px;
-    }
-
-    .features li::before{
-      content:"✓";
-      margin-right:8px;
-      color:#a788ff;
-      font-weight:bold;
-    }
-
-    .price-card .button{
-      width:100%;
-    }
-
-    /* CTA */
-
-    .cta{
-      padding:85px 7%;
-      text-align:center;
-
-      background:
-        radial-gradient(circle,#352052,transparent 45%),
-        #0a0a12;
-    }
-
-    .cta h2{
-      margin-bottom:10px;
-      font-size:42px;
-    }
-
-    .cta p{
-      margin-bottom:23px;
-      color:#858593;
-    }
-
-    /* FOOTER */
-
-    footer{
-      padding:40px 7% 25px;
-      border-top:1px solid #22222f;
-      background:#06060b;
-    }
-
-    .footer-top{
-      display:flex;
-      justify-content:space-between;
-      gap:30px;
-      margin-bottom:28px;
-    }
-
-    .footer-logo{
-      font-size:21px;
-      font-weight:900;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--pink),
-          var(--purple)
-        );
-
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .footer-text{
-      margin-top:6px;
-      color:#666675;
-      font-size:12px;
-    }
-
-    .footer-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:18px;
-      color:#777786;
-      font-size:12px;
-    }
-
-    .footer-links a:hover{
-      color:white;
-    }
-
-    .copyright{
-      padding-top:20px;
-      border-top:1px solid #1c1c27;
-      color:#5d5d6a;
-      text-align:center;
-      font-size:11px;
-    }
-
-    .creator{
-      margin-top:7px;
-      color:#967eb8;
-    }
-
-    /* TABLET */
-
-    @media(max-width:950px){
-
-      .nav{
-        display:none;
-      }
-
-      .category-grid{
-        grid-template-columns:repeat(3,1fr);
-      }
-
-      .story-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .feature-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .roleplay-grid{
-        grid-template-columns:1fr;
-      }
-
-      .pricing{
-        grid-template-columns:1fr;
-      }
-    }
-
-    /* MOBILE */
-
-    @media(max-width:600px){
-
-      .header{
-        height:62px;
-        padding:0 5%;
-      }
-
-      .logo{
-        font-size:21px;
-      }
-
-      .login{
-        display:none;
-      }
-
-      .join{
-        padding:8px 12px;
-        font-size:11px;
-      }
-
-      .hero{
-        min-height:540px;
-        padding:65px 6%;
-      }
-
-      .hero h1{
-        font-size:49px;
-        letter-spacing:-2px;
-      }
-
-      .hero p{
-        font-size:14px;
-      }
-
-      .button{
-        min-height:44px;
-        padding:0 17px;
-        font-size:12px;
-      }
-
-      .search-area{
-        width:90%;
-      }
-
-      .section{
-        padding:52px 6%;
-      }
-
-      .heading h2{
-        font-size:26px;
-      }
-
-      .category-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .story-grid{
-        grid-template-columns:1fr;
-      }
-
-      .story{
-        min-height:230px;
-      }
-
-      .feature-grid{
-        grid-template-columns:1fr;
-      }
-
-      .roleplay h2{
-        font-size:34px;
-      }
-
-      .mature-box,
-      .kids-box{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .mature h2,
-      .kids-box h2{
-        font-size:22px;
-      }
-
-      .cta{
-        padding:70px 6%;
-      }
-
-      .cta h2{
-        font-size:32px;
-      }
-
-      .footer-top{
-        flex-direction:column;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KathaVerse — Story Sessions</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#0b0b12;
+  color:#fff;
+  min-height:100vh;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(11,11,18,.95);
+  border-bottom:1px solid #252535;
+  padding:16px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+}
+
+.logo span{
+  color:#a855f7;
+}
+
+.header-btn{
+  background:#a855f7;
+  border:0;
+  color:#fff;
+  padding:10px 17px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.container{
+  width:90%;
+  max-width:1000px;
+  margin:auto;
+}
+
+.hero{
+  padding:50px 0 30px;
+}
+
+.badge{
+  display:inline-block;
+  background:#21142f;
+  color:#c084fc;
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:13px;
+  margin-bottom:15px;
+}
+
+h1{
+  font-size:38px;
+  line-height:1.15;
+  margin-bottom:12px;
+}
+
+.subtitle{
+  color:#aaa;
+  line-height:1.7;
+  max-width:700px;
+}
+
+.story-card{
+  background:#15151f;
+  border:1px solid #29293a;
+  border-radius:20px;
+  padding:25px;
+  margin:25px 0;
+}
+
+.story-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:flex-start;
+}
+
+.story-title{
+  font-size:25px;
+  font-weight:bold;
+}
+
+.story-description{
+  color:#aaa;
+  margin-top:7px;
+  line-height:1.5;
+}
+
+.season{
+  margin-top:30px;
+}
+
+.season-title{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.session{
+  background:#101019;
+  border:1px solid #29293a;
+  border-radius:15px;
+  padding:18px;
+  margin-bottom:12px;
+  transition:.2s;
+}
+
+.session:hover{
+  border-color:#6941c6;
+}
+
+.session-row{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:center;
+}
+
+.session-name{
+  font-size:17px;
+  font-weight:bold;
+}
+
+.session-desc{
+  color:#999;
+  font-size:14px;
+  margin-top:6px;
+}
+
+.status{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+
+.completed{
+  background:#12351f;
+  color:#4ade80;
+}
+
+.current{
+  background:#281b45;
+  color:#c084fc;
+}
+
+.locked{
+  background:#27272f;
+  color:#888;
+}
+
+.progress{
+  height:8px;
+  background:#292933;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:15px;
+}
+
+.progress-bar{
+  height:100%;
+  background:linear-gradient(90deg,#8b5cf6,#ec4899);
+  border-radius:20px;
+  width:0%;
+  transition:.3s;
+}
+
+.progress-text{
+  display:flex;
+  justify-content:space-between;
+  color:#999;
+  font-size:12px;
+  margin-top:8px;
+}
+
+.action{
+  margin-top:14px;
+}
+
+button{
+  font-family:inherit;
+}
+
+.continue-btn{
+  border:0;
+  background:#8b5cf6;
+  color:white;
+  padding:10px 15px;
+  border-radius:9px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.continue-btn:hover{
+  background:#7c3aed;
+}
+
+.memory{
+  margin-top:25px;
+  background:#0f172a;
+  border:1px solid #263449;
+  padding:20px;
+  border-radius:15px;
+}
+
+.memory h3{
+  margin-bottom:12px;
+}
+
+.memory p{
+  color:#b8c1d1;
+  line-height:1.7;
+}
+
+.memory ul{
+  margin:10px 0 0 20px;
+  color:#aaa;
+  line-height:1.8;
+}
+
+.chat{
+  margin-top:25px;
+  display:none;
+}
+
+.chat-box{
+  background:#11111a;
+  border:1px solid #29293a;
+  border-radius:18px;
+  padding:20px;
+}
+
+.message{
+  padding:13px 15px;
+  border-radius:13px;
+  margin-bottom:12px;
+  max-width:85%;
+  line-height:1.6;
+}
+
+.ai{
+  background:#211b2c;
+  border:1px solid #38274c;
+}
+
+.user{
+  background:#24243a;
+  margin-left:auto;
+}
+
+.chat-input{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+}
+
+.chat-input input{
+  flex:1;
+  background:#0b0b12;
+  color:#fff;
+  border:1px solid #303041;
+  border-radius:10px;
+  padding:13px;
+  outline:none;
+}
+
+.complete-box{
+  display:none;
+  margin-top:20px;
+  background:#13251a;
+  border:1px solid #285c38;
+  padding:18px;
+  border-radius:14px;
+}
+
+.complete-box h3{
+  color:#4ade80;
+  margin-bottom:8px;
+}
+
+.next-btn{
+  margin-top:13px;
+  background:#22c55e;
+  color:#06130a;
+  border:0;
+  padding:11px 17px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+footer{
+  text-align:center;
+  color:#777;
+  padding:45px 20px 25px;
+  font-size:13px;
+}
+
+@media(max-width:650px){
+
+  header{
+    padding:14px 4%;
+  }
+
+  .logo{
+    font-size:21px;
+  }
+
+  h1{
+    font-size:30px;
+  }
+
+  .story-card{
+    padding:18px;
+  }
+
+  .story-top{
+    flex-direction:column;
+  }
+
+  .session-row{
+    align-items:flex-start;
+  }
+
+  .chat-input{
+    flex-direction:column;
+  }
+
+  .chat-input button{
+    width:100%;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- शीर्ष मेनू -->
+<header>
+  <div class="logo">Katha<span>Verse</span></div>
+  <button class="header-btn" onclick="alert('Login system backend ke saath connect hoga.')">
+    Login
+  </button>
+</header>
 
-  <header class="header">
+<main class="container">
 
-    <a href="#" class="logo">KathaVerse</a>
+<section class="hero">
+  <div class="badge">📖 Interactive Story Series</div>
 
-    <nav class="nav">
-      <a href="#kahaniyan">कहानियाँ</a>
-      <a href="#kirdar">किरदार</a>
-      <a href="#roleplay">रोलप्ले</a>
-      <a href="#premium">प्रीमियम</a>
-    </nav>
+  <h1>Karan ❤️ Priya</h1>
 
-    <div class="header-buttons">
-      <a href="#" class="login">लॉगिन</a>
-      <a href="#" class="join">जुड़ें</a>
+  <p class="subtitle">
+    Ek kahani jo sirf padhi nahi jaati...
+    balki aapke decisions ke saath aage badhti hai.
+  </p>
+</section>
+
+<section class="story-card">
+
+  <div class="story-top">
+
+    <div>
+      <div class="story-title">Karan & Priya — Ek Adhoori Kahani</div>
+
+      <div class="story-description">
+        Har Session mein kahani ka ek naya chapter.
+        Pichhle events yaad rahenge aur agli story wahi se aage badhegi.
+      </div>
     </div>
 
-  </header>
+    <div class="badge">Season 1</div>
 
+  </div>
 
-  <!-- मुख्य भाग -->
+  <!-- SESSION 1 -->
+  <div class="season">
 
-  <main>
+    <div class="season-title">
+      🎬 Session 1 — Pehla Pyaar
+    </div>
 
-    <section class="hero">
+    <div class="session">
 
-      <div class="hero-content">
+      <div class="session-row">
 
-        <span class="badge">
-          🇮🇳 हिंदी कहानियाँ • AI किरदार • रोलप्ले
-        </span>
+        <div>
+          <div class="session-name">
+            Karan Ki Pehli Mohabbat
+          </div>
 
-        <h1>
-          अपनी कहानी की
-          <span class="gradient">
-            दुनिया में आइए।
-          </span>
-        </h1>
-
-        <p>
-          ऐसी कहानियाँ पढ़िए जहाँ आप सिर्फ दर्शक नहीं,
-          बल्कि कहानी का हिस्सा बनते हैं। अपने पसंदीदा
-          AI किरदार से बात कीजिए और अपने चुनावों के साथ
-          कहानी को आगे बढ़ाइए।
-        </p>
-
-        <div class="hero-buttons">
-
-          <a href="#kahaniyan" class="button primary">
-            📚 कहानियाँ देखें
-          </a>
-
-          <a href="#roleplay" class="button secondary">
-            🎭 रोलप्ले शुरू करें
-          </a>
-
+          <div class="session-desc">
+            Karan aur Priya ki mulaqat, dosti aur pehli mohabbat.
+          </div>
         </div>
 
+        <span id="session1Status" class="status current">
+          Playing
+        </span>
+
       </div>
 
-    </section>
+      <div class="progress">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <div class="progress-text">
+        <span id="messageCount">0 / 500 Messages</span>
+        <span id="percentage">0%</span>
+      </div>
+
+      <div class="action">
+        <button class="continue-btn" onclick="openChat()">
+          Continue Story
+        </button>
+      </div>
+
+    </div>
+
+  </div>
 
 
-    <!-- खोज -->
+  <!-- SESSION 2 -->
 
-    <div class="search-area">
+  <div class="season">
 
-      <div class="search">
+    <div class="season-title">
+      🎬 Session 2 — Shaadi Ka Faisla
+    </div>
 
-        <span>🔍</span>
+    <div class="session">
 
-        <input
-          type="search"
-          aria-label="खोजें"
-          placeholder="कहानी, किरदार या कैटेगरी खोजें..."
-        >
+      <div class="session-row">
+
+        <div>
+          <div class="session-name">
+            Karan Priya Se Shaadi Ke Liye Kehta Hai
+          </div>
+
+          <div class="session-desc">
+            Session 1 ke events ke baad Karan Priya ke saamne shaadi ka proposal rakhta hai.
+          </div>
+        </div>
+
+        <span id="session2Status" class="status locked">
+          🔒 Locked
+        </span>
+
+      </div>
+
+      <div class="action">
+        <button
+          id="session2Button"
+          class="continue-btn"
+          style="display:none"
+          onclick="startSession2()">
+          Start Session 2
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SESSION 3 -->
+
+  <div class="season">
+
+    <div class="season-title">
+      🎬 Session 3 — Dooriyan
+    </div>
+
+    <div class="session">
+
+      <div class="session-row">
+
+        <div>
+          <div class="session-name">
+            Priya Ke Faisle Ke Baad
+          </div>
+
+          <div class="session-desc">
+            Session 2 ke ending ke basis par kahani ka agla chapter.
+          </div>
+        </div>
+
+        <span class="status locked">
+          🔒 Locked
+        </span>
 
       </div>
 
     </div>
 
+  </div>
 
-    <!-- कैटेगरी -->
 
-    <section class="section">
+  <!-- MEMORY -->
 
-      <div class="heading">
+  <div class="memory">
 
-        <h2>
-          अपनी पसंद की <span>कहानी चुनें</span>
-        </h2>
+    <h3>🧠 Story Memory</h3>
+
+    <p>
+      KathaVerse important story events ko yaad rakhega,
+      taaki next Session mein kahani disconnected na lage.
+    </p>
+
+    <ul id="memoryList">
+      <li>Karan aur Priya ki mulaqat hui.</li>
+      <li>Dono ke beech friendship hui.</li>
+      <li>Karan ne Priya ko propose kiya.</li>
+      <li>Priya ne Karan ka proposal accept kiya.</li>
+    </ul>
+
+  </div>
+
+
+  <!-- CHAT -->
+
+  <section id="chat" class="chat">
+
+    <div class="chat-box">
+
+      <div class="message ai">
+        <b>🤖 KathaVerse AI</b><br><br>
+
+        Karan ne aaj finally Priya ke saamne apne dil ki baat keh di...
+        Priya kuch pal tak chup rahi.
+        Phir usne Karan ki taraf dekha aur dheere se muskurayi...
+      </div>
+
+      <div id="messages"></div>
+
+      <div class="chat-input">
+
+        <input
+          id="userInput"
+          type="text"
+          placeholder="Kahani mein kya hona chahiye...?">
+
+        <button
+          class="continue-btn"
+          onclick="sendMessage()">
+          Send
+        </button>
+
+      </div>
+
+      <div class="progress-text">
+        <span id="chatCounter">0 / 500</span>
+        <span>Session Messages</span>
+      </div>
+
+      <div id="completeBox" class="complete-box">
+
+        <h3>🎉 Session Complete!</h3>
 
         <p>
-          हर मूड के लिए एक नई दुनिया।
+          Session 1 complete ho gaya.
+          Ab Karan aur Priya ki kahani ka agla chapter unlock ho sakta hai.
         </p>
 
-      </div>
-
-      <div class="category-grid">
-
-        <a class="category" href="#">
-          <span class="category-icon">💕</span>
-          <span class="category-name">रोमांस</span>
-        </a>
-
-        <a class="category" href="#">
-          <span class="category-icon">🎓</span>
-          <span class="category-name">स्कूल और कॉलेज</span>
-        </a>
-
-        <a class="category" href="#">
-          <span class="category-icon">🕵️</span>
-          <span class="category-name">डिटेक्टिव</span>
-        </a>
-
-        <a class="category" href="#">
-          <span class="category-icon">👻</span>
-          <span class="category-name">हॉरर</span>
-        </a>
-
-        <a class="category" href="#">
-          <span class="category-icon">⚔️</span>
-          <span class="category-name">फैंटेसी</span>
-        </a>
-
-        <a class="category" href="#">
-          <span class="category-icon">🚀</span>
-          <span class="category-name">साइंस फिक्शन</span>
-        </a>
+        <button class="next-btn" onclick="unlockSession2()">
+          🔓 Unlock Session 2
+        </button>
 
       </div>
 
-    </section>
+    </div>
 
+  </section>
 
-    <!-- कहानियाँ -->
+</section>
 
-    <section class="section" id="kahaniyan">
+</main>
 
-      <div class="heading">
 
-        <h2>
-          आज की <span>लोकप्रिय कहानियाँ</span>
-        </h2>
+<footer>
+  © 2026 KathaVerse — Stories Beyond Imagination
+  <br><br>
+  Created & Developed by Asheesh Sarkar
+</footer>
 
-        <p>
-          ऐसी कहानियाँ जिन्हें लोग पढ़ना पसंद कर रहे हैं।
-        </p>
 
-      </div>
+<script>
 
-      <div class="story-grid">
+const MAX_MESSAGES = 500;
 
-        <article class="story">
+let currentSession =
+  Number(localStorage.getItem("kathaCurrentSession")) || 1;
 
-          <div class="story-content">
+let messageCount =
+  Number(localStorage.getItem("kathaMessageCount")) || 0;
 
-            <span class="tag">
-              💕 रोमांस
-            </span>
 
-            <h3>
-              जब हम फिर मिले
-            </h3>
+function updateProgress(){
 
-            <p>
-              पुरानी यादें, दोस्ती और एक अनकहा रिश्ता।
-            </p>
+  const percentage =
+    Math.min((messageCount / MAX_MESSAGES) * 100, 100);
 
-          </div>
+  document.getElementById("progressBar").style.width =
+    percentage + "%";
 
-        </article>
+  document.getElementById("messageCount").innerText =
+    messageCount + " / " + MAX_MESSAGES + " Messages";
 
+  document.getElementById("percentage").innerText =
+    Math.floor(percentage) + "%";
 
-        <article class="story">
+  document.getElementById("chatCounter").innerText =
+    messageCount + " / " + MAX_MESSAGES;
 
-          <div class="story-content">
+  if(messageCount >= MAX_MESSAGES){
 
-            <span class="tag">
-              🕵️ रहस्य
-            </span>
+    document.getElementById("session1Status").className =
+      "status completed";
 
-            <h3>
-              बंद कमरे का राज
-            </h3>
+    document.getElementById("session1Status").innerText =
+      "✓ Completed";
 
-            <p>
-              एक रहस्यमयी दरवाजा और उसके पीछे छिपा सच।
-            </p>
+    document.getElementById("completeBox").style.display =
+      "block";
+  }
 
-          </div>
+}
 
-        </article>
 
+function openChat(){
 
-        <article class="story">
+  document.getElementById("chat").style.display =
+    "block";
 
-          <div class="story-content">
+  document.getElementById("chat").scrollIntoView({
+    behavior:"smooth"
+  });
 
-            <span class="tag">
-              ⚔️ फैंटेसी
-            </span>
+}
 
-            <h3>
-              अंधेरों का राज्य
-            </h3>
 
-            <p>
-              एक भूला हुआ राज्य अपने आखिरी नायक का इंतजार कर रहा है।
-            </p>
+function sendMessage(){
 
-          </div>
+  const input =
+    document.getElementById("userInput");
 
-        </article>
+  const text =
+    input.value.trim();
 
+  if(!text) return;
 
-        <article class="story">
+  if(messageCount >= MAX_MESSAGES){
 
-          <div class="story-content">
+    alert("Session 1 ke 500 messages complete ho chuke hain.");
+    return;
+  }
 
-            <span class="tag">
-              💍 ड्रामा
-            </span>
+  messageCount++;
 
-            <h3>
-              एक अनजान शादी
-            </h3>
+  localStorage.setItem(
+    "kathaMessageCount",
+    messageCount
+  );
 
-            <p>
-              दो अजनबी और एक फैसला जो उनकी जिंदगी बदल देता है।
-            </p>
+  const messages =
+    document.getElementById("messages");
 
-          </div>
+  const userMessage =
+    document.createElement("div");
 
-        </article>
+  userMessage.className =
+    "message user";
 
-      </div>
+  userMessage.innerText =
+    text;
 
-    </section>
+  messages.appendChild(userMessage);
 
 
-    <!-- AI FEATURES -->
+  /*
+    DEMO AI RESPONSE
 
-    <section class="section" id="kirdar">
+    Real KathaVerse mein yahan backend AI API call hogi.
+  */
 
-      <div class="heading">
+  setTimeout(function(){
 
-        <h2>
-          KathaVerse में <span>क्या खास है?</span>
-        </h2>
+    const aiMessage =
+      document.createElement("div");
 
-        <p>
-          यहाँ कहानी सिर्फ पढ़ी नहीं जाती, महसूस की जाती है।
-        </p>
+    aiMessage.className =
+      "message ai";
 
-      </div>
+    aiMessage.innerHTML =
+      "<b>🤖 KathaVerse AI</b><br><br>" +
+      "Karan ne tumhari baat suni aur kahani ko " +
+      "usi direction mein aage badhaya...";
 
-      <div class="feature-grid">
+    messages.appendChild(aiMessage);
 
-        <article class="feature">
+    updateProgress();
 
-          <div class="feature-icon">🤖</div>
+  },400);
 
-          <h3>
-            AI किरदार
-          </h3>
 
-          <p>
-            अलग-अलग व्यक्तित्व, स्वभाव और कहानी वाले
-            काल्पनिक AI किरदारों से बातचीत करें।
-          </p>
+  input.value = "";
 
-        </article>
+  updateProgress();
 
+}
 
-        <article class="feature">
 
-          <div class="feature-icon">🧠</div>
+function unlockSession2(){
 
-          <h3>
-            कहानी की याद
-          </h3>
+  currentSession = 2;
 
-          <p>
-            AI बातचीत के महत्वपूर्ण fictional context को
-            याद रखकर कहानी को आगे बढ़ा सकेगा।
-          </p>
+  localStorage.setItem(
+    "kathaCurrentSession",
+    currentSession
+  );
 
-        </article>
+  document.getElementById("session2Status").className =
+    "status current";
 
+  document.getElementById("session2Status").innerText =
+    "▶ Available";
 
-        <article class="feature">
+  document.getElementById("session2Button").style.display =
+    "inline-block";
 
-          <div class="feature-icon">✍️</div>
+  alert(
+    "🎉 Session 2 Unlock Ho Gaya!"
+  );
 
-          <h3>
-            अपनी कहानी
-          </h3>
+}
 
-          <p>
-            अपना किरदार, अपनी कहानी और अपनी fictional दुनिया बनाइए।
-          </p>
 
-        </article>
-        
+function startSession2(){
+
+  alert(
+    "Session 2: Karan ab Priya se shaadi ke liye baat karega..."
+  );
+
+}
+
+
+/* Initial state */
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
