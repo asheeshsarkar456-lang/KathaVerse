@@ -1,1269 +1,1089 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>KathaVerse — Stories Beyond Imagination</title>
-
-<meta name="description"
-content="KathaVerse is a modern storytelling and character roleplay platform. Discover stories, characters and interactive worlds.">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,Arial,sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-background:#080810;
-color:#fff;
-overflow-x:hidden;
-}
-
-a{
-text-decoration:none;
-color:inherit;
-}
-
-button{
-font-family:inherit;
-cursor:pointer;
-}
-
-/* HEADER */
-
-header{
-height:72px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 6%;
-background:rgba(10,10,18,.88);
-backdrop-filter:blur(15px);
-border-bottom:1px solid #252536;
-position:sticky;
-top:0;
-z-index:100;
-}
-
-.logo{
-font-size:25px;
-font-weight:900;
-letter-spacing:-1px;
-background:linear-gradient(90deg,#ff3cac,#8b5cf6);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.nav{
-display:flex;
-gap:28px;
-color:#aaa;
-font-size:14px;
-}
-
-.nav a:hover{
-color:#fff;
-}
-
-.header-buttons{
-display:flex;
-gap:10px;
-}
-
-.login{
-padding:10px 17px;
-border:1px solid #363649;
-border-radius:10px;
-color:#ddd;
-}
-
-.signup{
-padding:10px 18px;
-border-radius:10px;
-background:linear-gradient(90deg,#ff3cac,#7c5cff);
-font-weight:bold;
-}
-
-/* HERO */
-
-.hero{
-min-height:650px;
-display:flex;
-align-items:center;
-padding:80px 7%;
-position:relative;
-overflow:hidden;
-background:
-radial-gradient(circle at 75% 25%,#4b1d66 0,transparent 32%),
-radial-gradient(circle at 15% 75%,#16285a 0,transparent 30%),
-#080810;
-}
-
-.hero:after{
-content:"";
-position:absolute;
-width:500px;
-height:500px;
-right:-180px;
-top:100px;
-border-radius:50%;
-background:linear-gradient(135deg,#ff3cac,#6938ef);
-opacity:.08;
-filter:blur(50px);
-}
-
-.hero-content{
-max-width:780px;
-position:relative;
-z-index:2;
-}
-
-.badge{
-display:inline-block;
-padding:8px 15px;
-border-radius:50px;
-background:#191525;
-border:1px solid #3b2c52;
-color:#d9b8ff;
-font-size:13px;
-margin-bottom:22px;
-}
-
-.hero h1{
-font-size:clamp(48px,8vw,86px);
-line-height:.98;
-letter-spacing:-4px;
-margin-bottom:25px;
-}
-
-.gradient{
-background:linear-gradient(90deg,#ff3cac,#8b5cf6,#4f8cff);
--webkit-background-clip:text;
-color:transparent;
-}
-
-.hero p{
-font-size:18px;
-line-height:1.7;
-color:#aaa;
-max-width:650px;
-margin-bottom:32px;
-}
-
-.hero-buttons{
-display:flex;
-gap:13px;
-flex-wrap:wrap;
-}
-
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:14px 23px;
-border-radius:12px;
-font-weight:700;
-border:1px solid transparent;
-}
-
-.primary{
-background:linear-gradient(90deg,#ff3cac,#765cff);
-box-shadow:0 10px 35px rgba(170,70,255,.18);
-}
-
-.secondary{
-background:#14141f;
-border-color:#343447;
-}
-
-/* SEARCH */
-
-.search-box{
-margin:-30px auto 0;
-position:relative;
-z-index:5;
-width:86%;
-max-width:900px;
-background:#13131e;
-border:1px solid #303043;
-padding:12px;
-border-radius:18px;
-display:flex;
-align-items:center;
-gap:10px;
-box-shadow:0 20px 50px rgba(0,0,0,.35);
-}
-
-.search-box span{
-font-size:20px;
-padding-left:8px;
-}
-
-.search-box input{
-flex:1;
-background:transparent;
-border:0;
-outline:none;
-color:#fff;
-font-size:15px;
-}
-
-.search-box input::placeholder{
-color:#777;
-}
-
-/* GENERAL */
-
-section{
-padding:75px 7%;
-}
-
-.section-head{
-display:flex;
-justify-content:space-between;
-align-items:end;
-margin-bottom:28px;
-}
-
-.section-title{
-font-size:32px;
-letter-spacing:-1px;
-}
-
-.section-title span{
-color:#b58aff;
-}
-
-.section-subtitle{
-color:#777;
-font-size:14px;
-margin-top:8px;
-}
-
-.view{
-color:#b88cff;
-font-size:14px;
-}
-
-/* CATEGORIES */
-
-.categories{
-display:grid;
-grid-template-columns:repeat(6,1fr);
-gap:13px;
-}
-
-.category{
-background:#13131e;
-border:1px solid #292939;
-border-radius:15px;
-padding:22px 12px;
-text-align:center;
-transition:.25s;
-}
-
-.category:hover{
-transform:translateY(-5px);
-border-color:#795cff;
-background:#181827;
-}
-
-.category-icon{
-font-size:30px;
-margin-bottom:9px;
-}
-
-.category p{
-font-size:13px;
-color:#aaa;
-}
-
-/* STORY CARDS */
-
-.story-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-}
-
-.story{
-height:270px;
-border-radius:19px;
-padding:20px;
-display:flex;
-flex-direction:column;
-justify-content:end;
-overflow:hidden;
-position:relative;
-border:1px solid #292939;
-background:linear-gradient(135deg,#40205d,#182b55);
-transition:.3s;
-}
-
-.story:hover{
-transform:translateY(-6px);
-border-color:#795cff;
-}
-
-.story:nth-child(2){
-background:linear-gradient(135deg,#67263e,#29205c);
-}
-
-.story:nth-child(3){
-background:linear-gradient(135deg,#173e48,#54235e);
-}
-
-.story:nth-child(4){
-background:linear-gradient(135deg,#49301a,#25205b);
-}
-
-.story:before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(transparent 30%,rgba(0,0,0,.8));
-}
-
-.story-content{
-position:relative;
-z-index:2;
-}
-
-.tag{
-display:inline-block;
-font-size:11px;
-padding:5px 9px;
-background:rgba(255,255,255,.12);
-border-radius:20px;
-margin-bottom:9px;
-color:#ddd;
-}
-
-.story h3{
-font-size:20px;
-margin-bottom:7px;
-}
-
-.story p{
-font-size:12px;
-color:#bbb;
-line-height:1.5;
-}
-
-/* FEATURES */
-
-.feature-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-}
-
-.feature{
-background:#12121c;
-border:1px solid #292939;
-border-radius:18px;
-padding:25px;
-}
-
-.feature-icon{
-font-size:35px;
-margin-bottom:15px;
-}
-
-.feature h3{
-margin-bottom:9px;
-}
-
-.feature p{
-color:#888;
-font-size:14px;
-line-height:1.6;
-}
-
-/* ROLEPLAY */
-
-.roleplay{
-background:
-radial-gradient(circle at 80% 50%,#352052,transparent 40%),
-#10101a;
-border-top:1px solid #222231;
-border-bottom:1px solid #222231;
-}
-
-.roleplay-box{
-display:grid;
-grid-template-columns:1.2fr .8fr;
-gap:30px;
-align-items:center;
-}
-
-.roleplay-text h2{
-font-size:45px;
-margin-bottom:17px;
-}
-
-.roleplay-text p{
-color:#999;
-line-height:1.7;
-max-width:600px;
-margin-bottom:25px;
-}
-
-.chat-preview{
-background:#171724;
-border:1px solid #333346;
-border-radius:20px;
-padding:20px;
-box-shadow:0 20px 60px rgba(0,0,0,.3);
-}
-
-.character{
-display:flex;
-align-items:center;
-gap:12px;
-padding-bottom:16px;
-border-bottom:1px solid #292939;
-}
-
-.avatar{
-width:45px;
-height:45px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#ff3cac,#735cff);
-font-size:21px;
-}
-
-.online{
-color:#54e39a;
-font-size:11px;
-}
-
-.message{
-margin-top:16px;
-padding:12px 14px;
-border-radius:14px;
-background:#242434;
-color:#ccc;
-font-size:13px;
-line-height:1.5;
-}
-
-.message.user{
-background:linear-gradient(90deg,#6338a0,#43308a);
-margin-left:35px;
-}
-
-/* MATURE */
-
-.mature{
-background:
-linear-gradient(90deg,rgba(63,20,49,.45),rgba(25,20,50,.45)),
-#11101a;
-border-top:1px solid #302234;
-border-bottom:1px solid #302234;
-}
-
-.mature-box{
-border:1px solid #55334e;
-background:#18131d;
-border-radius:20px;
-padding:30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:25px;
-}
-
-.mature h2{
-font-size:28px;
-margin-bottom:10px;
-}
-
-.mature p{
-color:#999;
-max-width:650px;
-line-height:1.6;
-font-size:14px;
-}
-
-.age{
-display:inline-block;
-margin-bottom:12px;
-padding:5px 10px;
-border-radius:7px;
-background:#301928;
-color:#ff9bd5;
-font-size:12px;
-}
-
-/* KIDS */
-
-.kids{
-background:#101a19;
-}
-
-.kids-box{
-border:1px solid #27443d;
-border-radius:20px;
-padding:30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-}
-
-.kids-box p{
-color:#8fa7a1;
-margin-top:8px;
-}
-
-/* PRICING */
-
-.pricing{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-}
-
-.price-card{
-background:#12121d;
-border:1px solid #2a2a3b;
-border-radius:20px;
-padding:28px;
-position:relative;
-}
-
-.price-card.popular{
-border-color:#885cff;
-box-shadow:0 15px 50px rgba(116,75,255,.13);
-}
-
-.popular-label{
-position:absolute;
-right:20px;
-top:18px;
-font-size:11px;
-background:#795cff;
-padding:5px 9px;
-border-radius:20px;
-}
-
-.price{
-font-size:38px;
-font-weight:800;
-margin:17px 0 5px;
-}
-
-.price small{
-font-size:13px;
-color:#777;
-font-weight:normal;
-}
-
-.price-card p{
-color:#888;
-font-size:13px;
-margin-bottom:22px;
-}
-
-.features{
-list-style:none;
-margin-bottom:25px;
-}
-
-.features li{
-padding:8px 0;
-color:#aaa;
-font-size:13px;
-}
-
-.features li:before{
-content:"✓";
-color:#9d7cff;
-margin-right:9px;
-}
-
-/* CTA */
-
-.cta{
-text-align:center;
-padding:90px 20px;
-background:
-radial-gradient(circle,#3d205b,transparent 45%),
-#0c0c14;
-}
-
-.cta h2{
-font-size:45px;
-margin-bottom:13px;
-}
-
-.cta p{
-color:#888;
-margin-bottom:25px;
-}
-
-/* FOOTER */
-
-footer{
-padding:35px 7%;
-border-top:1px solid #222231;
-background:#06060b;
-}
-
-.footer-main{
-display:flex;
-justify-content:space-between;
-gap:30px;
-margin-bottom:30px;
-}
-
-.footer-logo{
-font-size:21px;
-font-weight:800;
-}
-
-.footer-main p{
-color:#777;
-font-size:13px;
-margin-top:8px;
-}
-
-.footer-links{
-display:flex;
-gap:25px;
-color:#777;
-font-size:13px;
-}
-
-.copyright{
-padding-top:20px;
-border-top:1px solid #1d1d28;
-color:#555;
-font-size:12px;
-text-align:center;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.nav{
-display:none;
-}
-
-.categories{
-grid-template-columns:repeat(3,1fr);
-}
-
-.story-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.feature-grid{
-grid-template-columns:repeat(2,1fr);
-}
-
-.roleplay-box{
-grid-template-columns:1fr;
-}
-
-.pricing{
-grid-template-columns:1fr;
-}
-
-.mature-box,
-.kids-box{
-flex-direction:column;
-align-items:flex-start;
-}
-
-}
-
-@media(max-width:600px){
-
-header{
-padding:0 5%;
-}
-
-.login{
-display:none;
-}
-
-.hero{
-min-height:570px;
-padding:60px 6%;
-}
-
-.hero h1{
-font-size:50px;
-letter-spacing:-2px;
-}
-
-.hero p{
-font-size:15px;
-}
-
-section{
-padding:55px 6%;
-}
-
-.categories{
-grid-template-columns:repeat(2,1fr);
-}
-
-.story-grid{
-grid-template-columns:1fr;
-}
-
-.feature-grid{
-grid-template-columns:1fr;
-}
-
-.section-title{
-font-size:27px;
-}
-
-.roleplay-text h2{
-font-size:35px;
-}
-
-.cta h2{
-font-size:34px;
-}
-
-.footer-main{
-flex-direction:column;
-}
-
-.footer-links{
-flex-wrap:wrap;
-}
-
-.search-box{
-width:90%;
-}
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080812">
+
+  <title>KathaVerse — Stories Beyond Imagination</title>
+
+  <meta name="description"
+    content="KathaVerse — discover stories, characters and interactive fictional worlds.">
+
+  <style>
+    :root {
+      --bg: #080812;
+      --surface: #11111c;
+      --surface-2: #171725;
+      --border: #29293b;
+      --text: #ffffff;
+      --muted: #9999aa;
+      --pink: #ff3cac;
+      --purple: #795cff;
+      --green: #45d49a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      background: rgba(8, 8, 18, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      gap: 25px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a {
+      transition: color .2s ease;
+    }
+
+    .nav a:hover {
+      color: #fff;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .login-btn,
+    .join-btn {
+      padding: 9px 15px;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .login-btn {
+      border: 1px solid var(--border);
+      color: #ddd;
+    }
+
+    .join-btn {
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+      font-weight: 700;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      min-height: 610px;
+      display: flex;
+      align-items: center;
+      padding: 80px 7%;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 80% 25%, #44205d 0, transparent 30%),
+        radial-gradient(circle at 15% 80%, #162a5c 0, transparent 28%),
+        var(--bg);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 7px 13px;
+      border: 1px solid #3d3151;
+      border-radius: 30px;
+      background: #171321;
+      color: #d7b8ff;
+      font-size: 12px;
+    }
+
+    .hero h1 {
+      margin-bottom: 23px;
+      font-size: clamp(46px, 8vw, 82px);
+      line-height: .98;
+      letter-spacing: -4px;
+    }
+
+    .gradient {
+      background: linear-gradient(
+        90deg,
+        var(--pink),
+        #a269ff,
+        #628bff
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 11px;
+      border: 1px solid transparent;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+    }
+
+    .btn-secondary {
+      background: #13131f;
+      border-color: #353548;
+      color: #ddd;
+    }
+
+    /* SEARCH */
+
+    .search-wrap {
+      position: relative;
+      z-index: 5;
+      width: 86%;
+      max-width: 850px;
+      margin: -28px auto 0;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      border: 1px solid #303044;
+      border-radius: 16px;
+      background: #12121d;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+    }
+
+    .search-icon {
+      font-size: 18px;
+    }
+
+    .search input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .search input::placeholder {
+      color: #686879;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      padding: 70px 7%;
+    }
+
+    .section-heading {
+      margin-bottom: 27px;
+    }
+
+    .section-heading h2 {
+      font-size: 31px;
+      letter-spacing: -.7px;
+    }
+
+    .section-heading p {
+      margin-top: 6px;
+      color: #777789;
+      font-size: 13px;
+    }
+
+    .section-heading span {
+      color: #b28cff;
+    }
+
+    /* CATEGORY */
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+
+    .category {
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--surface);
+      text-align: center;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .category:hover {
+      transform: translateY(-3px);
+      border-color: #6754a8;
+    }
+
+    .category-icon {
+      font-size: 28px;
+    }
+
+    .category-name {
+      color: #bdbdca;
+      font-size: 12px;
+    }
+
+    /* STORIES */
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 17px;
+    }
+
+    .story-card {
+      position: relative;
+      min-height: 260px;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(145deg, #42205c, #182c55);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .story-card:nth-child(2) {
+      background: linear-gradient(145deg, #68283e, #29215e);
+    }
+
+    .story-card:nth-child(3) {
+      background: linear-gradient(145deg, #16414b, #51225e);
+    }
+
+    .story-card:nth-child(4) {
+      background: linear-gradient(145deg, #54351c, #25205a);
+    }
+
+    .story-card:hover {
+      transform: translateY(-4px);
+      border-color: #6d5ab1;
+    }
+
+    .story-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        transparent 25%,
+        rgba(5, 5, 10, .9)
+      );
+    }
+
+    .story-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .story-tag {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 4px 8px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.12);
+      color: #ddd;
+      font-size: 10px;
+    }
+
+    .story-content h3 {
+      margin-bottom: 5px;
+      font-size: 19px;
+    }
+
+    .story-content p {
+      color: #b5b5c1;
+      font-size: 12px;
+    }
+
+    /* FEATURE */
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .feature {
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: var(--surface);
+    }
+
+    .feature-icon {
+      margin-bottom: 13px;
+      font-size: 30px;
+    }
+
+    .feature h3 {
+      margin-bottom: 7px;
+      font-size: 17px;
+    }
+
+    .feature p {
+      color: #858594;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* ROLEPLAY */
+
+    .roleplay {
+      border-top: 1px solid #20202d;
+      border-bottom: 1px solid #20202d;
+      background:
+        radial-gradient(circle at 80% 50%, #33204c, transparent 38%),
+        #0d0d17;
+    }
+
+    .roleplay-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .roleplay-copy h2 {
+      margin-bottom: 15px;
+      font-size: 43px;
+      line-height: 1.1;
+    }
+
+    .roleplay-copy p {
+      max-width: 590px;
+      margin-bottom: 24px;
+      color: #9999a7;
+      line-height: 1.7;
+    }
+
+    .chat-box {
+      padding: 20px;
+      border: 1px solid #343447;
+      border-radius: 19px;
+      background: #151520;
+      box-shadow: 0 15px 50px rgba(0,0,0,.3);
+    }
+
+    .character {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #292938;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      font-size: 21px;
+    }
+
+    .character-name {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .online {
+      color: var(--green);
+      font-size: 10px;
+    }
+
+    .message {
+      margin-top: 14px;
+      padding: 11px 13px;
+      border-radius: 13px;
+      background: #252535;
+      color: #c7c7d0;
+      font-size: 12px;
+    }
+
+    .message.user {
+      margin-left: 28px;
+      background: #49358a;
+      color: #eee;
+    }
+
+    /* MATURE */
+
+    .mature-section {
+      background: #100d16;
+    }
+
+    .mature-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 28px;
+      border: 1px solid #513349;
+      border-radius: 19px;
+      background: #17121b;
+    }
+
+    .age-label {
+      display: inline-block;
+      margin-bottom: 9px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: #321a2b;
+      color: #ff9bd5;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .mature-box h2 {
+      margin-bottom: 8px;
+      font-size: 25px;
+    }
+
+    .mature-box p {
+      max-width: 680px;
+      color: #9696a3;
+      font-size: 13px;
+    }
+
+    /* KIDS */
+
+    .kids-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 28px;
+      border: 1px solid #29443e;
+      border-radius: 19px;
+      background: #101a19;
+    }
+
+    .kids-box h2 {
+      font-size: 25px;
+    }
+
+    .kids-box p {
+      margin-top: 6px;
+      color: #8da49e;
+      font-size: 13px;
+    }
+
+    /* PRICING */
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .price-card {
+      position: relative;
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      background: var(--surface);
+    }
+
+    .price-card.popular {
+      border-color: #795cff;
+      box-shadow: 0 15px 50px rgba(121,92,255,.12);
+    }
+
+    .popular-label {
+      position: absolute;
+      top: 17px;
+      right: 17px;
+      padding: 4px 8px;
+      border-radius: 15px;
+      background: #795cff;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .price-card h3 {
+      font-size: 17px;
+    }
+
+    .price {
+      margin: 15px 0 4px;
+      font-size: 38px;
+      font-weight: 900;
+    }
+
+    .price small {
+      color: #777789;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .price-description {
+      min-height: 38px;
+      color: #858593;
+      font-size: 12px;
+    }
+
+    .features {
+      margin: 20px 0;
+      list-style: none;
+    }
+
+    .features li {
+      padding: 6px 0;
+      color: #aaaab7;
+      font-size: 12px;
+    }
+
+    .features li::before {
+      content: "✓";
+      margin-right: 8px;
+      color: #a788ff;
+      font-weight: bold;
+    }
+
+    .price-card .btn {
+      width: 100%;
+    }
+
+    /* CTA */
+
+    .cta {
+      padding: 85px 7%;
+      text-align: center;
+      background:
+        radial-gradient(circle, #352052, transparent 45%),
+        #0a0a12;
+    }
+
+    .cta h2 {
+      margin-bottom: 10px;
+      font-size: 42px;
+    }
+
+    .cta p {
+      margin-bottom: 23px;
+      color: #858593;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 40px 7% 25px;
+      border-top: 1px solid #22222f;
+      background: #06060b;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 28px;
+    }
+
+    .footer-logo {
+      font-size: 21px;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-description {
+      margin-top: 6px;
+      color: #666675;
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: #777786;
+      font-size: 12px;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      padding-top: 20px;
+      border-top: 1px solid #1c1c27;
+      color: #5d5d6a;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .creator {
+      margin-top: 7px;
+      color: #8c7aa8;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 950px) {
+
+      .nav {
+        display: none;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .story-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .roleplay-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .header {
+        height: 62px;
+        padding: 0 5%;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .login-btn {
+        display: none;
+      }
+
+      .join-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+      }
+
+      .hero {
+        min-height: 550px;
+        padding: 65px 6%;
+      }
+
+      .hero h1 {
+        font-size: 49px;
+        letter-spacing: -2.5px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .btn {
+        min-height: 44px;
+        padding: 0 17px;
+        font-size: 12px;
+      }
+
+      .search-wrap {
+        width: 90%;
+      }
+
+      .section {
+        padding: 52px 6%;
+      }
+
+      .section-heading h2 {
+        font-size: 26px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story-card {
+        min-height: 230px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .roleplay-copy h2 {
+        font-size: 34px;
+      }
+
+      .mature-box,
+      .kids-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .mature-box h2,
+      .kids-box h2 {
+        font-size: 22px;
+      }
+
+      .cta {
+        padding: 70px 6%;
+      }
+
+      .cta h2 {
+        font-size: 32px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        gap: 14px;
+      }
+    }
+
+    /* REDUCE MOTION */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+
+    }
+
+  </style>
 </head>
 
 <body>
 
-<header>
+  <!-- HEADER -->
 
-<a href="#" class="logo">KathaVerse</a>
+  <header class="header">
 
-<nav class="nav">
-<a href="#stories">Stories</a>
-<a href="#characters">Characters</a>
-<a href="#roleplay">Roleplay</a>
-<a href="#pricing">Premium</a>
-</nav>
+    <a href="#" class="logo">
+      KathaVerse
+    </a>
 
-<div class="header-buttons">
-<a href="#" class="login">Login</a>
-<a href="#" class="signup">Join</a>
-</div>
+    <nav class="nav">
+      <a href="#stories">Stories</a>
+      <a href="#characters">Characters</a>
+      <a href="#roleplay">Roleplay</a>
+      <a href="#pricing">Premium</a>
+    </nav>
 
-</header>
+    <div class="header-actions">
+      <a href="#" class="login-btn">Login</a>
+      <a href="#" class="join-btn">Join</a>
+    </div>
 
+  </header>
 
-<!-- HERO -->
 
-<section class="hero">
+  <!-- HERO -->
 
-<div class="hero-content">
+  <main>
 
-<div class="badge">
-✨ Welcome to KathaVerse
-</div>
+    <section class="hero">
 
-<h1>
-Enter a world of<br>
-<span class="gradient">stories & imagination.</span>
-</h1>
+      <div class="hero-content">
 
-<p>
-Read unforgettable stories, meet unique characters,
-create your own worlds and experience interactive
-roleplay — all in one place.
-</p>
+        <span class="badge">
+          ✨ Stories • Characters • Roleplay
+        </span>
 
-<div class="hero-buttons">
+        <h1>
+          Enter your own
+          <span class="gradient">
+            universe.
+          </span>
+        </h1>
 
-<a href="#stories" class="btn primary">
-📚 Explore Stories
-</a>
+        <p class="hero-description">
+          Discover amazing stories, meet unique fictional
+          characters and create interactive worlds where
+          your imagination leads the way.
+        </p>
 
-<a href="#roleplay" class="btn secondary">
-🎭 Start Roleplay
-</a>
+        <div class="hero-actions">
 
-</div>
+          <a href="#stories" class="btn btn-primary">
+            📚 Explore Stories
+          </a>
 
-</div>
+          <a href="#roleplay" class="btn btn-secondary">
+            🎭 Start Roleplay
+          </a>
 
-</section>
+        </div>
 
+      </div>
 
-<!-- SEARCH -->
+    </section>
 
-<div class="search-box">
 
-<span>🔍</span>
+    <!-- SEARCH -->
 
-<input
-type="text"
-placeholder="Search stories, characters, genres..."
->
+    <div class="search-wrap">
 
-</div>
+      <div class="search">
 
+        <span class="search-icon">🔍</span>
 
-<!-- CATEGORIES -->
+        <input
+          type="search"
+          aria-label="Search KathaVerse"
+          placeholder="Search stories, characters or genres..."
+        >
 
-<section>
+      </div>
 
-<div class="section-head">
+    </div>
 
-<div>
-<h2 class="section-title">
-Explore <span>Categories</span>
-</h2>
 
-<p class="section-subtitle">
-Find a world that matches your mood.
-</p>
-</div>
+    <!-- CATEGORIES -->
 
-</div>
+    <section class="section">
 
-<div class="categories">
+      <div class="section-heading">
 
-<div class="category">
-<div class="category-icon">💕</div>
-<p>Romance</p>
-</div>
+        <h2>
+          Explore <span>Categories</span>
+        </h2>
 
-<div class="category">
-<div class="category-icon">🎓</div>
-<p>School & College</p>
-</div>
+        <p>
+          Find something that matches your mood.
+        </p>
 
-<div class="category">
-<div class="category-icon">🕵️</div>
-<p>Detective</p>
-</div>
+      </div>
 
-<div class="category">
-<div class="category-icon">👻</div>
-<p>Horror</p>
-</div>
+      <div class="category-grid">
 
-<div class="category">
-<div class="category-icon">⚔️</div>
-<p>Fantasy</p>
-</div>
+        <a href="#" class="category">
+          <span class="category-icon">💕</span>
+          <span class="category-name">Romance</span>
+        </a>
 
-<div class="category">
-<div class="category-icon">🚀</div>
-<p>Sci-Fi</p>
-</div>
+        <a href="#" class="category">
+          <span class="category-icon">🎓</span>
+          <span class="category-name">School & College</span>
+        </a>
 
-</div>
+        <a href="#" class="category">
+          <span class="category-icon">🕵️</span>
+          <span class="category-name">Detective</span>
+        </a>
 
-</section>
+        <a href="#" class="category">
+          <span class="category-icon">👻</span>
+          <span class="category-name">Horror</span>
+        </a>
 
+        <a href="#" class="category">
+          <span class="category-icon">⚔️</span>
+          <span class="category-name">Fantasy</span>
+        </a>
 
-<!-- STORIES -->
+        <a href="#" class="category">
+          <span class="category-icon">🚀</span>
+          <span class="category-name">Sci-Fi</span>
+        </a>
 
-<section id="stories">
+      </div>
 
-<div class="section-head">
+    </section>
 
-<div>
-<h2 class="section-title">
-Trending <span>Stories</span>
-</h2>
 
-<p class="section-subtitle">
-Stories people are discovering right now.
-</p>
-</div>
+    <!-- STORIES -->
 
-<a class="view" href="#">View all →</a>
+    <section class="section" id="stories">
 
-</div>
+      <div class="section-heading">
 
-<div class="story-grid">
+        <h2>
+          Trending <span>Stories</span>
+        </h2>
 
-<div class="story">
-<div class="story-content">
-<span class="tag">💕 Romance</span>
-<h3>When We Met Again</h3>
-<p>A story of memories, friendship and unexpected love.</p>
-</div>
-</div>
+        <p>
+          Discover fictional worlds and unforgettable characters.
+        </p>
 
-<div class="story">
-<div class="story-content">
-<span class="tag">🕵️ Mystery</span>
-<h3>The Hidden Room</h3>
-<p>A strange discovery leads to a dangerous mystery.</p>
-</div>
-</div>
+      </div>
 
-<div class="story">
-<div class="story-content">
-<span class="tag">⚔️ Fantasy</span>
-<h3>Kingdom of Shadows</h3>
-<p>Enter a world where magic has disappeared.</p>
-</div>
-</div>
+      <div class="story-grid">
 
-<div class="story">
-<div class="story-content">
-<span class="tag">💍 Drama</span>
-<h3>The Unexpected Marriage</h3>
-<p>Two strangers. One decision that changes everything.</p>
-</div>
-</div>
+        <article class="story-card">
+          <div class="story-content">
 
-</div>
+            <span class="story-tag">
+              💕 Romance
+            </span>
 
-</section>
+            <h3>
+              When We Met Again
+            </h3>
 
+            <p>
+              Memories, friendship and an unexpected connection.
+            </p>
 
-<!-- FEATURES -->
+          </div>
+        </article>
 
-<section id="characters">
 
-<div class="section-head">
+        <article class="story-card">
+          <div class="story-content">
 
-<div>
-<h2 class="section-title">
-Why <span>KathaVerse?</span>
-</h2>
+            <span class="story-tag">
+              🕵️ Mystery
+            </span>
 
-<p class="section-subtitle">
-More than reading. Become part of the story.
-</p>
-</div>
+            <h3>
+              The Hidden Room
+            </h3>
 
-</div>
+            <p>
+              A mysterious discovery begins a dangerous journey.
+            </p>
 
-<div class="feature-grid">
+          </div>
+        </article>
 
-<div class="feature">
-<div class="feature-icon">🤖</div>
-<h3>AI Characters</h3>
-<p>Meet fictional characters with unique personalities and conversations.</p>
-</div>
 
-<div class="feature">
-<div class="feature-icon">✍️</div>
-<h3>Create Stories</h3>
-<p>Build your own stories, characters and fictional worlds.</p>
-</div>
+        <article class="story-card">
+          <div class="story-content">
 
-<div class="feature">
-<div class="feature-icon">🎭</div>
-<h3>Roleplay</h3>
-<p>Step inside a story and interact with characters.</p>
-</div>
+            <span class="story-tag">
+              ⚔️ Fantasy
+            </span>
 
-<div class="feature">
-<div class="feature-icon">🧠</div>
-<h3>Character Memory</h3>
-<p>Characters can remember important parts of an ongoing fictional conversation.</p>
-</div>
+            <h3>
+              Kingdom of Shadows
+            </h3>
 
-</div>
+            <p>
+              A forgotten kingdom waits for its final hero.
+            </p>
 
-</section>
+          </div>
+        </article>
 
 
-<!-- ROLEPLAY -->
+        <article class="story-card">
+          <div class="story-content">
 
-<section class="roleplay" id="roleplay">
+            <span class="story-tag">
+              💍 Drama
+            </span>
 
-<div class="roleplay-box">
+            <h3>
+              The Unexpected Marriage
+            </h3>
 
-<div class="roleplay-text">
-
-<h2>
-Your character.<br>
-Your conversation.
-</h2>
-
-<p>
-Choose a fictional character, enter a fictional world
-and decide where the story goes. Your choices can
-change the direction of the adventure.
-</p>
-
-<a href="#" class="btn primary">
-🎭 Create Roleplay
-</a>
-
-</div>
-
-
-<div class="chat-preview">
-
-<div class="character">
-
-<div class="avatar">🌙</div>
-
-<div>
-<strong>Aria</strong>
-<div class="online">● Online</div>
-</div>
-
-</div>
-
-<div class="message">
-Aria looks at the mysterious door.
-“Are you sure you want to open it?”
-</div>
-
-<div class="message user">
-“Yes. Let's find out what's behind it.”
-</div>
-
-<div class="message">
-The door slowly opens...
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- MATURE -->
-
-<section class="mature">
-
-<div class="mature-box">
-
-<div>
-
-<span class="age">30+ MATURE AUDIENCE</span>
-
-<h2>Mature Stories & Roleplay</h2>
-
-<p>
-A separate mature-audience space for adult fictional
-romance, relationship stories and mature themes.
-Age-gating and community safety rules apply.
-</p>
-
-</div>
-
-<a href="#" class="btn secondary">
-Enter 30+ Zone →
-</a>
-
-</div>
-
-</section>
-
-
-<!-- KIDS -->
-
-<section class="kids">
-
-<div class="kids-box">
-
-<div>
-
-<h2>🌈 Kids Stories</h2>
-
-<p>
-Fun, educational and family-friendly stories created
-for younger readers.
-</p>
-
-</div>
-
-<a href="#stories" class="btn secondary">
-Explore Kids Stories
-</a>
-
-</div>
-
-</section>
-
-
-<!-- PRICING -->
-
-<section id="pricing">
-
-<div class="section-head">
-
-<div>
-
-<h2 class="section-title">
-Simple <span>Premium</span>
-</h2>
-
-<p class="section-subtitle">
-Start free. Upgrade when you want more.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="pricing">
-
-
-<div class="price-card">
-
-<h3>Free</h3>
-
-<div class="price">
-₹0
-<small>/ forever</small>
-</div>
-
-<p>Perfect for exploring KathaVerse.</p>
-
-<ul class="features">
-<li>100 messages per day</li>
-<li>Read public stories</li>
-<li>Explore characters</li>
-<li>Basic roleplay</li>
-</ul>
-
-<a href="#" class="btn secondary">
-Start Free
-</a>
-
-</div>
-
-
-<div class="price-card popular">
-
-<span class="popular-label">
-POPULAR
-</span>
-
-<h3>Monthly</h3>
-
-<div class="price">
-₹99
-<small>/ month</small>
-</div>
-
-<p>Full KathaVerse experience.</p>
-
-<ul class="features">
-<li>Unlimited-style messaging*</li>
-<li>Premium characters</li>
-<li>Premium stories</li>
-<li>Advanced roleplay</li>
-<li>Create characters</li>
-</ul>
-
-<a href="#" class="btn primary">
-Get Premium
-</a>
-
-</div>
-
-
-<div class="price-card">
-
-<h3>Yearly</h3>
-
-<div class="price">
-₹999
-<small>/ year</small>
-</div>
-
-<p>For regular storytellers.</p>
-
-<ul class="features">
-<li>Everything in Monthly</li>
-<li>Premium content</li>
-<li>Character creation</li>
-<li>Story creation</li>
-<li>Priority features</li>
-</ul>
-
-<a href="#" class="btn secondary">
-Choose Yearly
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CTA -->
-
-<section class="cta">
-
-<h2>Ready to enter KathaVerse?</h2>
-
-<p>
-Your next story is waiting.
-</p>
-
-<a href="#" class="btn primary">
-✨ Create Your Account
-</a>
-
-</section>
-
-
-<footer>
-
-<div class="footer-main">
-
-<div>
-
-<div class="footer-logo">KathaVerse</div>
-
-<p>Stories Beyond Imagination.</p>
-
-</div>
-
-<div class="footer-links">
-<a href="#">About</a>
-<a href="#">Community</a>
-<a href="#">Safety</a>
-<a href="#">Privacy</a>
-<a href="#">Terms</a>
-</div>
-
-</div>
-
-<div class="copyright">
-© 2026 KathaVerse. All rights reserved.
-</div>
-
-</footer>
-
-</body>
-</html>
+            <p>
+              Two strangers fac
