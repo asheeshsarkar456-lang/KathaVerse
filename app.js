@@ -1,3 +1,4 @@
+const API_BASE_URL = "YOUR_BACKEND_URL";
 /* =========================================================
    KATHAVERSE — APP.JS
    Frontend Prototype
