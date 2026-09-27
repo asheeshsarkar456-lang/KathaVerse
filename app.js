@@ -1,561 +1,92 @@
+/* =========================================================
+   KATHAVERSE
+   Frontend Application
+========================================================= */
+
+
+/* =========================================================
+   BACKEND URL
+=========================================================
+
+   Backend deploy hone ke baad yahan apna URL daalna:
+
+   const API_BASE_URL =
+     "https://your-kathaverse-backend.example.com";
+
+========================================================= */
+
 const API_BASE_URL = "YOUR_BACKEND_URL";
-/* =========================================================
-   KATHAVERSE — APP.JS
-   Frontend Prototype
-========================================================= */
 
 
 /* =========================================================
-   DATA
+   APP CONFIG
 ========================================================= */
 
-const stories = [
-
-  {
-    id: 1,
-    title: "रात के 2 बजे आया मैसेज",
-    genre: "Romance",
-    icon: "💌",
-    description: "एक अनजान मैसेज से शुरू हुई कहानी।",
-    type: "story"
-  },
-
-  {
-    id: 2,
-    title: "पुरानी डायरी",
-    genre: "Mystery",
-    icon: "📖",
-    description: "एक पुरानी डायरी में छिपा हुआ रहस्य।",
-    type: "story"
-  },
-
-  {
-    id: 3,
-    title: "आखिरी प्लेटफॉर्म",
-    genre: "Mystery",
-    icon: "🚉",
-    description: "एक स्टेशन, एक रहस्यमयी यात्री और एक आखिरी ट्रेन।",
-    type: "story"
-  },
-
-  {
-    id: 4,
-    title: "आखिरी घर",
-    genre: "Horror",
-    icon: "🏚️",
-    description: "शहर के बाहर मौजूद उस घर में कोई अकेला नहीं था।",
-    type: "story"
-  },
-
-  {
-    id: 5,
-    title: "चाँद का साम्राज्य",
-    genre: "Fantasy",
-    icon: "🌙",
-    description: "एक ऐसी दुनिया जहाँ चाँद के अपने नियम हैं।",
-    type: "story"
-  },
-
-  {
-    id: 6,
-    title: "2099: आखिरी इंसान",
-    genre: "Sci-Fi",
-    icon: "🤖",
-    description: "भविष्य की दुनिया में एक इंसान की आखिरी कहानी।",
-    type: "story"
-  },
-
-  {
-    id: 7,
-    title: "कॉलेज की पहली मुलाकात",
-    genre: "College",
-    icon: "🎓",
-    description: "कॉलेज के पहले दिन हुई एक यादगार मुलाकात।",
-    type: "story"
-  },
-
-  {
-    id: 8,
-    title: "एक अधूरी शादी",
-    genre: "Drama",
-    icon: "💍",
-    description: "एक शादी से पहले बदल गई पूरी जिंदगी।",
-    type: "story"
-  },
-
-  {
-    id: 9,
-    title: "समुद्र के उस पार",
-    genre: "Adventure",
-    icon: "🌊",
-    description: "एक सफर जो जिंदगी बदल देता है।",
-    type: "story"
-  },
-
-  {
-    id: 10,
-    title: "जादुई दरवाज़ा",
-    genre: "Fantasy",
-    icon: "🚪",
-    description: "कमरे में अचानक दिखाई दिया एक रहस्यमयी दरवाज़ा।",
-    type: "story"
-  },
-
-  {
-    id: 11,
-    title: "डिटेक्टिव की आखिरी फाइल",
-    genre: "Detective",
-    icon: "🕵️",
-    description: "एक केस जिसे पुलिस भी हल नहीं कर पाई।",
-    type: "story"
-  },
-
-  {
-    id: 12,
-    title: "बारिश और तुम",
-    genre: "Romance",
-    icon: "🌧️",
-    description: "बारिश की एक शाम और दो अनजान लोग।",
-    type: "story"
-  },
-
-  {
-    id: 13,
-    title: "जंगल का रहस्य",
-    genre: "Horror",
-    icon: "🌲",
-    description: "जंगल में जाने वाले लोग वापस क्यों नहीं आते?",
-    type: "story"
-  },
-
-  {
-    id: 14,
-    title: "स्टारशिप आर्या",
-    genre: "Sci-Fi",
-    icon: "🚀",
-    description: "पृथ्वी से बहुत दूर शुरू हुआ एक मिशन।",
-    type: "story"
-  },
-
-  {
-    id: 15,
-    title: "दो शहरों के बीच",
-    genre: "Drama",
-    icon: "🌆",
-    description: "दो शहर और एक रिश्ता।",
-    type: "story"
-  },
-
-  {
-    id: 16,
-    title: "दादी की जादुई कहानी",
-    genre: "Kids",
-    icon: "🧸",
-    description: "बच्चों के लिए एक प्यारी जादुई कहानी।",
-    type: "story"
-  }
-
-];
+const APP_CONFIG = {
+  dailyFreeMessages: 100,
+  sessionMessages: 500,
+  storyUnlockLevel: 5,
+  matureAge: 30
+};
 
 
 /* =========================================================
-   ROLEPLAY DATA
+   STORAGE
 ========================================================= */
 
-const roleplays = [
-
-  {
-    id: 101,
-    title: "कॉलेज का नया दोस्त",
-    genre: "College",
-    icon: "🎓",
-    description: "एक नए कॉलेज में दोस्ती की शुरुआत।",
-    type: "roleplay"
-  },
-
-  {
-    id: 102,
-    title: "डिटेक्टिव पार्टनर",
-    genre: "Detective",
-    icon: "🕵️",
-    description: "आप और AI मिलकर केस सॉल्व करेंगे।",
-    type: "roleplay"
-  },
-
-  {
-    id: 103,
-    title: "Fantasy Kingdom",
-    genre: "Fantasy",
-    icon: "👑",
-    description: "एक magical kingdom में आपका adventure।",
-    type: "roleplay"
-  },
-
-  {
-    id: 104,
-    title: "Adventure Mission",
-    genre: "Adventure",
-    icon: "🧭",
-    description: "एक dangerous mission आपका इंतजार कर रहा है।",
-    type: "roleplay"
-  },
-
-  {
-    id: 105,
-    title: "Mystery House",
-    genre: "Mystery",
-    icon: "🏠",
-    description: "एक रहस्यमयी घर और उसके अनसुलझे सवाल।",
-    type: "roleplay"
-  },
-
-  {
-    id: 106,
-    title: "नई जिंदगी",
-    genre: "Drama",
-    icon: "🌅",
-    description: "एक नए शहर में नई शुरुआत।",
-    type: "roleplay"
-  }
-
-];
+const STORAGE_KEY = "kathaverse_state_v3";
 
 
 /* =========================================================
-   AI CHARACTERS
+   INITIAL STATE
 ========================================================= */
-
-const characters = [
-
-  {
-    id: 1,
-    name: "आर्या",
-    role: "Friendly AI Character",
-    icon: "🌸",
-    description: "एक friendly और समझदार AI character।"
-  },
-
-  {
-    id: 2,
-    name: "कबीर",
-    role: "Detective Partner",
-    icon: "🕵️",
-    description: "आपके साथ mystery cases solve करने वाला partner।"
-  },
-
-  {
-    id: 3,
-    name: "मीरा",
-    role: "Fantasy Guide",
-    icon: "🧚",
-    description: "एक magical world की guide।"
-  },
-
-  {
-    id: 4,
-    name: "रुद्र",
-    role: "Mystery Character",
-    icon: "🖤",
-    description: "जिसके बारे में बहुत कम लोग जानते हैं।"
-  },
-
-  {
-    id: 5,
-    name: "ज़ोया",
-    role: "College Friend",
-    icon: "🎓",
-    description: "कॉलेज की fun और energetic friend।"
-  },
-
-  {
-    id: 6,
-    name: "अर्जुन",
-    role: "Adventure Partner",
-    icon: "🧭",
-    description: "हर adventure में साथ देने वाला partner।"
-  }
-
-];
-
-
-/* =========================================================
-   CATEGORIES
-========================================================= */
-
-const categories = [
-
-  ["all", "✦", "All"],
-
-  ["Romance", "💌", "Romance"],
-
-  ["Mystery", "🔎", "Mystery"],
-
-  ["Detective", "🕵️", "Detective"],
-
-  ["Horror", "👻", "Horror"],
-
-  ["Fantasy", "🌙", "Fantasy"],
-
-  ["Sci-Fi", "🚀", "Sci-Fi"],
-
-  ["College", "🎓", "College"],
-
-  ["Drama", "🎭", "Drama"],
-
-  ["Kids", "🧸", "Kids"],
-
-  ["Adventure", "🧭", "Adventure"]
-
-];
-
-
-/* =========================================================
-   100 LEVEL REWARDS
-========================================================= */
-
-const levelRewards = [
-
-  "KathaVerse Start",
-
-  "Basic Roleplay",
-
-  "Favourites",
-
-  "Bookmarks",
-
-  "Story Creation",
-
-  "Character Interaction",
-
-  "Comments",
-
-  "Badge System",
-
-  "Streak Rewards",
-
-  "AI Visual Stories",
-
-  "Quick Replies",
-
-  "Story Themes",
-
-  "Extra Bookmark",
-
-  "Profile Frame",
-
-  "Advanced Memory",
-
-  "Creator Tools",
-
-  "Comment Reactions",
-
-  "Custom Tags",
-
-  "Story Drafts",
-
-  "Character Customization",
-
-  "Reader Badge",
-
-  "Extra Daily KP",
-
-  "Cover Themes",
-
-  "Private Drafts",
-
-  "Special Badge",
-
-  "Creator Stats",
-
-  "More Character Slots",
-
-  "Custom Intro",
-
-  "Story Collections",
-
-  "Story Series",
-
-  "Series Cover",
-
-  "Extra Save Slots",
-
-  "Reader Streak",
-
-  "Creator Notes",
-
-  "Story Analytics",
-
-  "Character Notes",
-
-  "Custom Greeting",
-
-  "More Draft Slots",
-
-  "Share Card",
-
-  "Advanced Sessions",
-
-  "Session Recap",
-
-  "Story Timeline",
-
-  "Ending Notes",
-
-  "More AI Turns",
-
-  "Creator Profile",
-
-  "Featured Drafts",
-
-  "Extra Collections",
-
-  "Profile Badge",
-
-  "Creator Milestone",
-
-  "Creator Badge",
-
-  "Advanced Search",
-
-  "More Favourites",
-
-  "Story Filters",
-
-  "Extra Reports",
-
-  "Community Badge",
-
-  "Character Gallery",
-
-  "Visual Scene Slots",
-
-  "Series Manager",
-
-  "Creator Insights",
-
-  "Visual Customization",
-
-  "Premium Trial Token",
-
-  "Extra Roleplay Slot",
-
-  "Reader Rank",
-
-  "Story Challenge",
-
-  "Challenge Badge",
-
-  "Creator Challenge",
-
-  "Series Intro",
-
-  "More Cover Themes",
-
-  "Advanced Profile",
-
-  "Elite Badge",
-
-  "Elite Frame",
-
-  "More AI Memory",
-
-  "Longer Drafts",
-
-  "Creator Tools+",
-
-  "Spotlight Eligibility",
-
-  "Community Spotlight",
-
-  "Special Reaction",
-
-  "Extra Character Slot",
-
-  "Story Vault",
-
-  "Featured Eligibility",
-
-  "Featured Frame",
-
-  "Series Badge",
-
-  "Creator Vault",
-
-  "Advanced Stats",
-
-  "Veteran Track",
-
-  "Veteran Frame",
-
-  "More Visual Scenes",
-
-  "Creator Showcase",
-
-  "Special Title",
-
-  "Veteran Badge",
-
-  "Legendary Frame",
-
-  "Extra Collections+",
-
-  "Creator Legacy",
-
-  "Story Archive",
-
-  "Hall of Stories",
-
-  "Legend Track",
-
-  "Legendary Creator Tools",
-
-  "Special Nameplate",
-
-  "Final Milestone",
-
-  "KathaVerse Legend"
-
-];
-
-
-/* =========================================================
-   APPLICATION STATE
-========================================================= */
-
-const STORAGE_KEY = "kathaverse_data_v1";
-
 
 const defaultState = {
 
-  name: "Asheesh",
+  page: "home",
 
   language: "auto",
 
   kp: 0,
 
-  messagesToday: 0,
-
-  level: 1,
+  saved: [],
 
   session: 1,
 
-  sessionMessages: 0,
+  sessionMessages: [],
 
-  createdStories: 0,
+  previousResponseId: null,
 
-  saved: [],
+  dailyMessages: 0,
 
-  chats: [],
+  dailyDate: new Date().toISOString().slice(0, 10),
 
-  comments: [],
+  matureVerified: false,
+
+  user: {
+    name: "Asheesh",
+    username: "@asheesh",
+    bio: "Story lover • Creator • Dreamer",
+    avatar: "AS"
+  },
+
+  currentItem: null,
+
+  currentCharacter: null,
+
+  communityComments: [],
 
   reports: [],
 
-  followers: 0,
+  likedComments: [],
 
-  premium: false,
+  following: [],
 
-  matureVerified: false
+  settings: {
+    autoplay: true,
+    notifications: true,
+    darkMode: true
+  }
 
 };
 
@@ -564,7 +95,7 @@ let appState = loadState();
 
 
 /* =========================================================
-   LOAD STATE
+   STORAGE FUNCTIONS
 ========================================================= */
 
 function loadState() {
@@ -572,39 +103,39 @@ function loadState() {
   try {
 
     const saved =
-      localStorage.getItem(STORAGE_KEY);
+      JSON.parse(
+        localStorage.getItem(STORAGE_KEY)
+      );
 
     if (!saved) {
-
-      return {
-        ...defaultState
-      };
-
+      return structuredClone(defaultState);
     }
 
     return {
-      ...defaultState,
-      ...JSON.parse(saved)
+      ...structuredClone(defaultState),
+      ...saved,
+
+      user: {
+        ...defaultState.user,
+        ...(saved.user || {})
+      },
+
+      settings: {
+        ...defaultState.settings,
+        ...(saved.settings || {})
+      }
     };
 
-  } catch (error) {
+  } catch {
 
-    console.error(error);
-
-    return {
-      ...defaultState
-    };
+    return structuredClone(defaultState);
 
   }
 
 }
 
 
-/* =========================================================
-   SAVE STATE
-========================================================= */
-
-function saveState() {
+function saveAppState() {
 
   localStorage.setItem(
     STORAGE_KEY,
@@ -615,190 +146,638 @@ function saveState() {
 
 
 /* =========================================================
-   LEVEL CALCULATION
+   DAILY RESET
 ========================================================= */
 
-function calculateLevel() {
+function resetDailyCounterIfNeeded() {
+
+  const today =
+    new Date()
+      .toISOString()
+      .slice(0, 10);
+
+  if (appState.dailyDate !== today) {
+
+    appState.dailyDate = today;
+
+    appState.dailyMessages = 0;
+
+    saveAppState();
+
+  }
+
+}
+
+
+/* =========================================================
+   KP / LEVEL SYSTEM
+========================================================= */
+
+function getLevelFromKP(kp) {
 
   return Math.min(
-
     100,
-
-    Math.floor(
-      appState.kp / 100
-    ) + 1
-
+    Math.max(
+      1,
+      Math.floor(kp / 100) + 1
+    )
   );
 
 }
 
 
-function updateLevel() {
+function getLevelKP(level) {
 
-  appState.level =
-    calculateLevel();
+  return Math.max(
+    0,
+    (level - 1) * 100
+  );
 
 }
 
 
-/* =========================================================
-   ADD KATHA POINTS
-========================================================= */
+function addKP(amount, reason = "") {
 
-function addKathaPoints(points) {
+  appState.kp += amount;
 
-  const oldLevel =
-    calculateLevel();
+  saveAppState();
 
-  appState.kp += points;
+  showToast(
+    `+${amount} KP ${reason ? "• " + reason : ""}`
+  );
 
-  if (appState.kp > 10000) {
+  render();
 
-    appState.kp = 10000;
+}
 
+
+function getLevelProgress() {
+
+  const level =
+    getLevelFromKP(appState.kp);
+
+  if (level >= 100) {
+    return 100;
   }
 
-  updateLevel();
+  const base =
+    getLevelKP(level);
 
-  saveState();
+  return Math.min(
+    100,
+    Math.round(
+      ((appState.kp - base) / 100) * 100
+    )
+  );
 
-  const newLevel =
-    calculateLevel();
+}
 
-  if (newLevel > oldLevel) {
 
-    showToast(
-      `🎉 Level Up! अब आप Level ${newLevel} पर हैं`
-    );
+/* =========================================================
+   100 LEVEL REWARDS
+========================================================= */
 
+const LEVEL_REWARDS = [
+  "Profile badge unlocked",
+  "Custom profile title unlocked",
+  "First story bookmark style",
+  "Explorer badge unlocked",
+  "Story Creator unlocked",
+  "Character nickname color",
+  "Extra saved-story slot",
+  "Community creator badge",
+  "Custom reading streak badge",
+  "Roleplay veteran badge",
+
+  "10% profile XP boost",
+  "New profile frame",
+  "Special story reaction",
+  "Extra favourite slot",
+  "Creator spotlight entry",
+  "Character showcase slot",
+  "Custom chat bubble style",
+  "Story completion badge",
+  "Community supporter badge",
+  "New avatar frame",
+
+  "Story collection badge",
+  "Extra roleplay save slot",
+  "Creator profile highlight",
+  "Custom username badge",
+  "Premium trial coupon eligibility",
+  "New reading theme",
+  "Story explorer badge",
+  "Character collector badge",
+  "Comment supporter badge",
+  "Community explorer badge",
+
+  "Custom profile banner",
+  "Extra character slot",
+  "Story creator theme",
+  "Roleplay creator badge",
+  "New chat background",
+  "Story streak badge",
+  "Creator milestone badge",
+  "Extra saved character slot",
+  "Custom level emblem",
+  "Community legend badge",
+
+  "Special creator card",
+  "Extra story draft slot",
+  "New profile animation",
+  "Character library badge",
+  "Story marathon badge",
+  "Roleplay marathon badge",
+  "Creator journey badge",
+  "New reaction pack",
+  "Profile spotlight eligibility",
+  "50% story XP weekend boost",
+
+  "Story curator badge",
+  "Extra community collection",
+  "Custom creator signature",
+  "New story cover style",
+  "Roleplay cover style",
+  "Character cover style",
+  "Extra draft memory slot",
+  "Story archive badge",
+  "Community helper badge",
+  "Creator anniversary badge",
+
+  "Special gold badge",
+  "Custom level title",
+  "New profile glow",
+  "Story master badge",
+  "Roleplay master badge",
+  "Character master badge",
+  "Creator master badge",
+  "Community master badge",
+  "Explorer master badge",
+  "Storyverse badge",
+
+  "Advanced creator frame",
+  "Premium badge preview",
+  "Custom story footer",
+  "Extra character personality slot",
+  "New chat effect",
+  "Creator collection badge",
+  "Story architect badge",
+  "Roleplay architect badge",
+  "Character architect badge",
+  "Community architect badge",
+
+  "KathaVerse veteran badge",
+  "Legend profile frame",
+  "Custom creator card",
+  "Extra story collection",
+  "Extra roleplay collection",
+  "Creator showcase priority",
+  "Advanced profile title",
+  "Legendary explorer badge",
+  "KathaVerse Hall badge",
+  "Level 100 Legend"
+];
+
+
+function getLevelReward(level) {
+
+  return (
+    LEVEL_REWARDS[level - 1] ||
+    `Level ${level} special reward`
+  );
+
+}
+
+
+/* =========================================================
+   500+ CATALOG
+========================================================= */
+
+const catalogSeeds = {
+
+  romance: [
+    "Adhoori Mohabbat",
+    "Barish Mein Tum",
+    "Woh Ek Muskaan",
+    "Aakhri Message",
+    "Dil Ka Raaz",
+    "Tum Mere Saath Ho",
+    "Coffee Aur Baarish",
+    "Ek Purani Tasveer",
+    "Chupke Se Pyaar",
+    "Wapas Aaya Ishq",
+    "Platform Number Saat",
+    "Mulaqat Ke Baad",
+    "Khat Jo Kabhi Nahi Bheja",
+    "Ek Shaam Tumhare Naam",
+    "Dil Ki Diary"
+  ],
+
+  college: [
+    "College Ki Pehli Subah",
+    "Library Wali Ladki",
+    "Last Bench Love",
+    "Campus Ka Raaz",
+    "Fest Mein Mulaqat",
+    "Hostel Ke Din",
+    "Canteen Ki Kahani",
+    "Final Year Promise",
+    "Classroom No. 12",
+    "The Missing Notebook",
+    "College Reunion",
+    "Scholarship Wali Kahani"
+  ],
+
+  detective: [
+    "Band Kamre Ka Raaz",
+    "Aakhri Saboot",
+    "Midnight Detective",
+    "Station Par Ek Laash",
+    "Code 17",
+    "Missing File",
+    "Black Envelope",
+    "The Silent Witness",
+    "Purani Haveli Case",
+    "Room 404 Mystery",
+    "Secret Photograph",
+    "Vanishing Train"
+  ],
+
+  horror: [
+    "Raat Ke 3 Baje",
+    "Purani Haveli",
+    "Khidki Ke Bahar",
+    "Woh Awaaz",
+    "Band School",
+    "Andheri Sadak",
+    "Last Bus",
+    "Room Number 13",
+    "Jungle Ka Ghar",
+    "Aaine Mein Chehra",
+    "Kali Seedhiyan",
+    "Midnight Call"
+  ],
+
+  fantasy: [
+    "Aakhri Jadugar",
+    "Chand Ka Rajya",
+    "Khoi Hui Talwar",
+    "Dragon Ki Wapsi",
+    "Jungle Ka Raja",
+    "Magic Library",
+    "Seven Kingdoms",
+    "Amar Yodha",
+    "Forbidden Kingdom",
+    "Mystic River",
+    "Golden Crown",
+    "Shadow Prince"
+  ],
+
+  scifi: [
+    "2099: New Earth",
+    "Mars Colony",
+    "Time Machine",
+    "Last Human City",
+    "AI Ka Sapna",
+    "Galaxy 9",
+    "Robot Heart",
+    "Future Mumbai",
+    "The Last Signal",
+    "Quantum Door",
+    "Space Station 17",
+    "Neon Earth"
+  ],
+
+  drama: [
+    "Ghar Ki Kahani",
+    "Ek Parivaar",
+    "Papa Ka Sapna",
+    "Maa Ki Chitthi",
+    "Do Bhai",
+    "Wapas Ghar",
+    "Purani Diary",
+    "Naya Safar",
+    "Ek Faisla",
+    "Zindagi Ka Mod"
+  ],
+
+  comedy: [
+    "Shaadi Ka Hungama",
+    "Padosi Ki Problem",
+    "Office Ka Joker",
+    "Roommate Trouble",
+    "Canteen Comedy",
+    "Family Group",
+    "Wrong Number",
+    "Mohalle Ka Hero",
+    "Boss Ki Shaadi",
+    "Desi Detective"
+  ],
+
+  kids: [
+    "Chintu Aur Magic Pencil",
+    "Golu Ka Rocket",
+    "Tara Aur Flying Book",
+    "Jungle School",
+    "Motu Robot",
+    "Magic Backpack",
+    "Rainbow Village",
+    "Little Space Explorer",
+    "Talking Tree",
+    "Moon Train"
+  ]
+
+};
+
+
+const genreInfo = {
+
+  romance: ["❤️", "Romance"],
+  college: ["🎓", "College"],
+  detective: ["🕵️", "Detective"],
+  horror: ["👻", "Horror"],
+  fantasy: ["🧙", "Fantasy"],
+  scifi: ["🚀", "Sci-Fi"],
+  drama: ["🎭", "Drama"],
+  comedy: ["😂", "Comedy"],
+  kids: ["🧸", "Kids"]
+
+};
+
+
+function buildCatalog() {
+
+  const stories = [];
+
+  let id = 1;
+
+  Object.keys(catalogSeeds)
+    .forEach((genre) => {
+
+      const [icon, label] =
+        genreInfo[genre];
+
+      catalogSeeds[genre]
+        .forEach((seed, index) => {
+
+          for (let variant = 1; variant <= 4; variant++) {
+
+            stories.push({
+
+              id: `story-${id++}`,
+
+              title:
+                variant === 1
+                  ? seed
+                  : `${seed} — Chapter ${variant}`,
+
+              genre: label,
+
+              category: genre,
+
+              icon,
+
+              type: "story",
+
+              description:
+                getStoryDescription(
+                  genre,
+                  seed,
+                  variant
+                )
+
+            });
+
+          }
+
+        });
+
+    });
+
+  return stories;
+
+}
+
+
+function getStoryDescription(
+  genre,
+  seed,
+  variant
+) {
+
+  const descriptions = {
+
+    romance:
+      `एक भावनात्मक कहानी जहाँ ${seed} से शुरू होता है एक नया रिश्ता और कई अनकहे राज सामने आते हैं।`,
+
+    college:
+      `कॉलेज की दुनिया, दोस्ती, सपने और ${seed} से जुड़ा एक ऐसा मोड़ जो सब बदल देता है।`,
+
+    detective:
+      `${seed} के पीछे छिपे रहस्य को सुलझाने के लिए सुराग, शक और खतरे से भरी जाँच।`,
+
+    horror:
+      `${seed} की रात एक ऐसी घटना शुरू होती है जिसका जवाब शायद इंसानी दुनिया में नहीं है।`,
+
+    fantasy:
+      `${seed} की जादुई दुनिया में एक असाधारण यात्रा, रहस्य और शक्तियों की कहानी।`,
+
+    scifi:
+      `${seed} के बीच भविष्य की तकनीक और इंसानी भावनाओं की टक्कर।`,
+
+    drama:
+      `${seed} के आसपास रिश्तों, परिवार और जीवन के कठिन फैसलों की कहानी।`,
+
+    comedy:
+      `${seed} से शुरू होने वाली हल्की-फुल्की और मजेदार कहानी जिसमें हर कदम पर नया ट्विस्ट है।`,
+
+    kids:
+      `${seed} बच्चों के लिए एक सुरक्षित, मजेदार और कल्पनाशील adventure है।`
+
+  };
+
+  return descriptions[genre] ||
+    `${seed} की एक interactive कहानी।`;
+
+}
+
+
+const STORIES = buildCatalog();
+
+
+/* =========================================================
+   ROLEPLAY CATALOG
+========================================================= */
+
+const roleplaySeeds = [
+
+  ["❤️", "Best Friend to Love", "romance"],
+  ["❤️", "Old Love Returns", "romance"],
+  ["❤️", "Neighbourhood Crush", "romance"],
+  ["🎓", "College Best Friend", "college"],
+  ["🎓", "New Student", "college"],
+  ["🎓", "Final Year Partner", "college"],
+  ["🕵️", "Private Detective", "detective"],
+  ["🕵️", "Secret Investigation", "detective"],
+  ["🕵️", "Missing Person Case", "detective"],
+  ["👻", "Haunted House", "horror"],
+  ["👻", "Midnight Survivor", "horror"],
+  ["👻", "Ghost Hunter", "horror"],
+  ["🧙", "Royal Wizard", "fantasy"],
+  ["🧙", "Lost Kingdom", "fantasy"],
+  ["🧙", "Dragon Rider", "fantasy"],
+  ["🚀", "Mars Commander", "scifi"],
+  ["🚀", "Future Detective", "scifi"],
+  ["🚀", "Space Survivor", "scifi"],
+  ["🎭", "Family Drama", "drama"],
+  ["🎭", "New Beginning", "drama"],
+  ["😂", "Crazy Roommate", "comedy"],
+  ["😂", "Funny Boss", "comedy"],
+  ["🧸", "Magic School", "kids"],
+  ["🧸", "Young Explorer", "kids"]
+];
+
+
+function buildRoleplays() {
+
+  const result = [];
+
+  let id = 1;
+
+  roleplaySeeds.forEach(
+    ([icon, name, category]) => {
+
+      for (
+        let variant = 1;
+        variant <= 10;
+        variant++
+      ) {
+
+        result.push({
+
+          id: `role-${id++}`,
+
+          title:
+            variant === 1
+              ? name
+              : `${name} — Scenario ${variant}`,
+
+          icon,
+
+          category,
+
+          type: "roleplay",
+
+          description:
+            `Interactive ${name} roleplay. आप अपनी बात, फैसले और actions से कहानी बदल सकते हैं।`
+
+        });
+
+      }
+
+    }
+  );
+
+  return result;
+
+}
+
+
+const ROLEPLAYS = buildRoleplays();
+
+
+/* =========================================================
+   AI CHARACTERS
+========================================================= */
+
+const CHARACTERS = [
+
+  {
+    id: "char-1",
+    name: "Aarav",
+    icon: "🧑",
+    genre: "Romance",
+    personality:
+      "calm, caring, emotional and supportive"
+  },
+
+  {
+    id: "char-2",
+    name: "Meera",
+    icon: "👩",
+    genre: "Drama",
+    personality:
+      "intelligent, warm and thoughtful"
+  },
+
+  {
+    id: "char-3",
+    name: "Inspector Kabir",
+    icon: "🕵️",
+    genre: "Detective",
+    personality:
+      "sharp, observant and logical"
+  },
+
+  {
+    id: "char-4",
+    name: "Rudra",
+    icon: "🧙",
+    genre: "Fantasy",
+    personality:
+      "brave, mysterious and powerful"
+  },
+
+  {
+    id: "char-5",
+    name: "Nova",
+    icon: "🤖",
+    genre: "Sci-Fi",
+    personality:
+      "curious, futuristic and analytical"
+  },
+
+  {
+    id: "char-6",
+    name: "Mimi",
+    icon: "🧸",
+    genre: "Kids",
+    personality:
+      "friendly, playful and family-friendly"
+  },
+
+  {
+    id: "char-7",
+    name: "The Narrator",
+    icon: "📖",
+    genre: "Story",
+    personality:
+      "cinematic, descriptive and creative"
+  },
+
+  {
+    id: "char-8",
+    name: "Shadow",
+    icon: "🌑",
+    genre: "Mystery",
+    personality:
+      "quiet, mysterious and unpredictable"
   }
 
-}
+];
 
 
 /* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(value) {
-
-  return String(value ?? "")
-
-    .replaceAll("&", "&amp;")
-
-    .replaceAll("<", "&lt;")
-
-    .replaceAll(">", "&gt;")
-
-    .replaceAll('"', "&quot;")
-
-    .replaceAll("'", "&#039;");
-
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-function showToast(message) {
-
-  const toast =
-    document.getElementById("toast");
-
-  if (!toast) return;
-
-  toast.textContent = message;
-
-  toast.classList.add("show");
-
-  clearTimeout(
-    window.toastTimer
-  );
-
-  window.toastTimer =
-    setTimeout(() => {
-
-      toast.classList.remove("show");
-
-    }, 2500);
-
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-function openModal(content) {
-
-  const modal =
-    document.getElementById(
-      "globalModal"
-    );
-
-  const body =
-    document.getElementById(
-      "modalBody"
-    );
-
-  body.innerHTML = content;
-
-  modal.classList.remove(
-    "hidden"
-  );
-
-}
-
-
-function closeModal() {
-
-  const modal =
-    document.getElementById(
-      "globalModal"
-    );
-
-  modal.classList.add(
-    "hidden"
-  );
-
-}
-
-
-/* =========================================================
-   MENU
+   INIT
 ========================================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
   () => {
 
-    const menu =
-      document.getElementById(
-        "menuButton"
-      );
+    resetDailyCounterIfNeeded();
 
-    if (menu) {
-
-      menu.addEventListener(
-        "click",
-        () => {
-
-          const sidebar =
-            document.getElementById(
-              "sidebar"
-            );
-
-          sidebar.classList.toggle(
-            "open"
-          );
-
-        }
-      );
-
-    }
-
-    renderHome();
+    render();
 
   }
 );
@@ -808,205 +787,110 @@ document.addEventListener(
    NAVIGATION
 ========================================================= */
 
-function navigateTo(
-  page,
-  parameter = null
-) {
+function navigate(page) {
 
-  const sidebar =
+  appState.page = page;
+
+  closeSidebar();
+
+  render();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+function toggleSidebar() {
+
+  document
+    .getElementById("sidebar")
+    .classList.toggle("open");
+
+}
+
+
+function closeSidebar() {
+
+  document
+    .getElementById("sidebar")
+    .classList.remove("open");
+
+}
+
+
+/* =========================================================
+   MAIN RENDER
+========================================================= */
+
+function render() {
+
+  resetDailyCounterIfNeeded();
+
+  updateActiveNav();
+
+  const main =
     document.getElementById(
-      "sidebar"
+      "mainContent"
     );
 
-  if (sidebar) {
+  if (!main) return;
 
-    sidebar.classList.remove(
-      "open"
-    );
+  const pages = {
 
-  }
+    home: renderHome,
 
-  window.scrollTo(
-    0,
-    0
-  );
+    explore: renderExplore,
 
+    stories: renderStories,
 
-  switch (page) {
+    roleplay: renderRoleplay,
 
-    case "home":
-      renderHome();
-      break;
+    characters: renderCharacters,
 
-    case "explore":
-      renderExplore();
-      break;
+    creator: renderCreator,
 
-    case "stories":
-      renderStories();
-      break;
+    saved: renderSaved,
 
-    case "roleplay":
-      renderRoleplay();
-      break;
+    community: renderCommunity,
 
-    case "characters":
-      renderCharacters();
-      break;
+    levels: renderLevels,
 
-    case "create":
-      renderCreateStory();
-      break;
+    premium: renderPremium,
 
-    case "saved":
-      renderSaved();
-      break;
+    profile: renderProfile,
 
-    case "community":
-      renderCommunity();
-      break;
+    reports: renderReports,
 
-    case "levels":
-      renderLevels();
-      break;
+    settings: renderSettings,
 
-    case "premium":
-      renderPremium();
-      break;
+    search: renderSearch
 
-    case "profile":
-      renderProfile();
-      break;
+  };
 
-    case "reports":
-      renderReports();
-      break;
+  const fn =
+    pages[appState.page] ||
+    renderHome;
 
-    case "settings":
-      renderSettings();
-      break;
-
-    case "search":
-      renderSearch();
-      break;
-
-    case "chat":
-      renderChat(parameter);
-      break;
-
-    default:
-      renderHome();
-
-  }
+  main.innerHTML = fn();
 
 }
 
 
-/* =========================================================
-   UPDATE AVATAR
-========================================================= */
+function updateActiveNav() {
 
-function updateAvatar() {
+  document
+    .querySelectorAll(".nav-item")
+    .forEach((item) => {
 
-  const avatar =
-    document.getElementById(
-      "profileAvatar"
-    );
+      item.classList.toggle(
+        "active",
+        item.dataset.page === appState.page
+      );
 
-  if (!avatar) return;
-
-  avatar.textContent =
-    (
-      appState.name ||
-      "A"
-    )
-      .charAt(0)
-      .toUpperCase();
-
-}
-
-
-/* =========================================================
-   CARD
-========================================================= */
-
-function createCard(item) {
-
-  return `
-
-    <article class="card">
-
-      <div class="card-cover">
-        ${item.icon}
-      </div>
-
-      <div class="card-body">
-
-        <h3>
-          ${escapeHTML(item.title)}
-        </h3>
-
-        <span class="tag">
-          ${escapeHTML(item.genre)}
-        </span>
-
-        <span class="tag">
-          ${
-            item.type === "roleplay"
-              ? "Roleplay"
-              : "Story"
-          }
-        </span>
-
-        <p class="muted">
-          ${escapeHTML(
-            item.description
-          )}
-        </p>
-
-        <div class="actions">
-
-          <button
-            class="btn btn-primary"
-            onclick="openExperience(${item.id})"
-          >
-            शुरू करें
-          </button>
-
-          <button
-            class="btn"
-            onclick="saveExperience(${item.id})"
-          >
-            ${
-              appState.saved.includes(
-                item.id
-              )
-                ? "♥ Saved"
-                : "♡ Save"
-            }
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
-
-  `;
-
-}
-
-
-/* =========================================================
-   ALL EXPERIENCES
-========================================================= */
-
-function getAllExperiences() {
-
-  return [
-    ...stories,
-    ...roleplays
-  ];
+    });
 
 }
 
@@ -1017,328 +901,196 @@ function getAllExperiences() {
 
 function renderHome() {
 
-  const main =
-    document.getElementById(
-      "mainContent"
-    );
+  const level =
+    getLevelFromKP(appState.kp);
 
-  updateLevel();
+  const featured =
+    STORIES.slice(0, 8);
 
-  main.innerHTML = `
+  const roleplays =
+    ROLEPLAYS.slice(0, 6);
 
-    <section class="hero">
+  return `
 
-      <h1>
-        आपकी कहानी।
-        <br>
-        आपकी दुनिया।
-      </h1>
+    <div class="page">
 
-      <p>
-        KathaVerse में stories पढ़ें,
-        AI characters से बात करें,
-        roleplay करें और अपनी खुद की
-        interactive कहानी बनाएं।
-      </p>
+      <section class="hero">
 
-      <div class="actions">
-
-        <button
-          class="btn btn-primary"
-          onclick="navigateTo('explore')"
-        >
-          ✦ Stories Explore करें
-        </button>
-
-        <button
-          class="btn"
-          onclick="navigateTo('create')"
-        >
-          ✍️ अपनी कहानी बनाएं
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <section class="stats-grid">
-
-      <div class="stat-card">
-        <strong>
-          ${appState.kp}
-        </strong>
-        <span>
-          Katha Points
-        </span>
-      </div>
-
-
-      <div class="stat-card">
-        <strong>
-          Level ${appState.level}
-        </strong>
-        <span>
-          ${
-            levelRewards[
-              appState.level - 1
-            ]
-          }
-        </span>
-      </div>
-
-
-      <div class="stat-card">
-        <strong>
-          ${appState.messagesToday}/100
-        </strong>
-        <span>
-          Free Messages Today
-        </span>
-      </div>
-
-
-      <div class="stat-card">
-        <strong>
-          Session ${appState.session}
-        </strong>
-        <span>
-          ${appState.sessionMessages}/500
-          messages
-        </span>
-      </div>
-
-    </section>
-
-
-    <div class="section-head">
-
-      <h2>
-        🔥 Trending Stories
-      </h2>
-
-      <button
-        class="btn"
-        onclick="navigateTo('stories')"
-      >
-        सभी देखें
-      </button>
-
-    </div>
-
-
-    <div class="grid">
-
-      ${stories
-        .slice(0, 8)
-        .map(createCard)
-        .join("")}
-
-    </div>
-
-
-    <div class="section-head">
-
-      <h2>
-        ◈ Popular Roleplay
-      </h2>
-
-      <button
-        class="btn"
-        onclick="navigateTo('roleplay')"
-      >
-        सभी देखें
-      </button>
-
-    </div>
-
-
-    <div class="grid">
-
-      ${roleplays
-        .slice(0, 4)
-        .map(createCard)
-        .join("")}
-
-    </div>
-
-
-    <div class="section-head">
-
-      <h2>
-        ♙ AI Characters
-      </h2>
-
-      <button
-        class="btn"
-        onclick="navigateTo('characters')"
-      >
-        सभी देखें
-      </button>
-
-    </div>
-
-
-    <div class="grid">
-
-      ${characters
-        .slice(0, 4)
-        .map(
-          createCharacterCard
-        )
-        .join("")}
-
-    </div>
-
-  `;
-
-  updateAvatar();
-
-}
-
-
-/* =========================================================
-   EXPLORE
-========================================================= */
-
-function renderExplore() {
-
-  const main =
-    document.getElementById(
-      "mainContent"
-    );
-
-  main.innerHTML = `
-
-    <div class="section-head">
-
-      <h1>
-        ✦ Explore
-      </h1>
-
-    </div>
-
-
-    <div class="actions">
-
-      ${categories
-        .map(
-          category => `
-
-            <button
-              class="btn"
-              onclick="filterStories('${category[0]}')"
-            >
-              ${category[1]}
-              ${category[2]}
-            </button>
-
-          `
-        )
-        .join("")}
-
-    </div>
-
-
-    <div
-      id="exploreResults"
-      class="grid"
-      style="margin-top:18px"
-    >
-
-      ${getAllExperiences()
-        .map(createCard)
-        .join("")}
-
-    </div>
-
-  `;
-
-}
-
-
-/* =========================================================
-   FILTER
-========================================================= */
-
-function filterStories(
-  genre
-) {
-
-  const container =
-    document.getElementById(
-      "exploreResults"
-    );
-
-  if (!container) return;
-
-  let results;
-
-  if (
-    genre === "all"
-  ) {
-
-    results =
-      getAllExperiences();
-
-  } else {
-
-    results =
-      getAllExperiences()
-        .filter(
-          item =>
-            item.genre === genre
-        );
-
-  }
-
-  if (!results.length) {
-
-    container.innerHTML = `
-
-      <div class="empty-state">
-
-        <div class="empty-state-icon">
-          📚
+        <div class="tag">
+          ✨ AI Storytelling Platform
         </div>
 
+        <h1>
+          Stories Beyond Imagination
+        </h1>
+
         <p>
-          इस category में अभी content नहीं है।
+          KathaVerse में कहानी सिर्फ पढ़ी नहीं जाती —
+          आप उसे जीते हैं, बदलते हैं और अपनी दुनिया बनाते हैं।
         </p>
 
-      </div>
+        <div class="hero-actions">
 
-    `;
+          <button
+            class="btn"
+            onclick="navigate('stories')"
+          >
+            📚 Explore Stories
+          </button>
 
-    return;
+          <button
+            class="btn secondary"
+            onclick="navigate('roleplay')"
+          >
+            🎭 Start Roleplay
+          </button>
 
-  }
+          <button
+            class="btn gold"
+            onclick="navigate('creator')"
+          >
+            ✍️ Create Story
+          </button>
 
-  container.innerHTML =
-    results
-      .map(createCard)
-      .join("");
+        </div>
+
+      </section>
+
+
+      <section class="section">
+
+        <div class="stat-grid">
+
+          <div class="stat">
+            <div class="stat-number">
+              ${STORIES.length}+
+            </div>
+            <div class="stat-label">
+              Stories
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-number">
+              ${ROLEPLAYS.length}+
+            </div>
+            <div class="stat-label">
+              Roleplays
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-number">
+              100
+            </div>
+            <div class="stat-label">
+              Levels
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-number kp">
+              ${appState.kp}
+            </div>
+            <div class="stat-label">
+              Katha Points
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="section">
+
+        <div class="section-header">
+
+          <h2>
+            🔥 Trending Stories
+          </h2>
+
+          <button
+            class="btn small secondary"
+            onclick="navigate('stories')"
+          >
+            View All
+          </button>
+
+        </div>
+
+        <div class="grid">
+          ${featured.map(renderStoryCard).join("")}
+        </div>
+
+      </section>
+
+
+      <section class="section">
+
+        <div class="section-header">
+
+          <h2>
+            🎭 Popular Roleplays
+          </h2>
+
+          <button
+            class="btn small secondary"
+            onclick="navigate('roleplay')"
+          >
+            View All
+          </button>
+
+        </div>
+
+        <div class="grid">
+          ${roleplays.map(renderRoleplayCard).join("")}
+        </div>
+
+      </section>
+
+
+      <section class="section">
+
+        <div class="card">
+
+          <div class="card-body">
+
+            <h3>
+              🏆 Level ${level}
+            </h3>
+
+            <p>
+              ${getLevelReward(level)}
+            </p>
+
+            <div class="progress">
+              <div
+                class="progress-bar"
+                style="width:${getLevelProgress()}%"
+              ></div>
+            </div>
+
+            <br>
+
+            <button
+              class="btn small"
+              onclick="navigate('levels')"
+            >
+              View 100 Levels
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  `;
 
 }
 
 
-/* =========================================================
-   STORIES
-========================================================= */
-
-function renderStories() {
-
-  const main =
-    document.getElementById(
-      "mainContent"
-    );
-
-  main.innerHTML = `
-
-    <div class="section-head">
-
-      <h1>
-        📚 Stories
-      </h1>
-
-    
+/* =======================================================
